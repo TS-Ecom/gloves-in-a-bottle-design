@@ -1,0 +1,2871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Lift 5+ Lifting Serum | Gloves In A Bottle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   AGE LIFT 5+ SERUM — HIGH-FIDELITY PROTOTYPE
+   PDP / Landing Page Hybrid
+   Mobile-first · 375px → 1440px
+   ============================================= */
+
+:root {
+  /* Brand Palette — Premium Purple Anti-Aging */
+  --cream:        #F8F5FC;
+  --cream-dark:   #F0EBF5;
+  --sand:         #DDD5E8;
+  --warm-grey:    #8A8498;
+  --charcoal:     #2E2640;
+  --deep:         #1E1530;
+  --accent:       #7B5EA7;
+  --accent-hover: #6B4E97;
+  --accent-light: #F0EAF8;
+  --gold:         #C4993B;
+  --green:        #5A7A62;
+  --green-light:  #EDF5EF;
+  --white:        #FFFFFF;
+  --border:       #DDD5E8;
+  --error:        #C0392B;
+
+  /* Typography */
+  --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Spacing (8px grid) */
+  --s-2:  4px;
+  --s-4:  8px;
+  --s-8:  16px;
+  --s-12: 24px;
+  --s-16: 32px;
+  --s-20: 40px;
+  --s-24: 48px;
+  --s-32: 64px;
+  --s-40: 80px;
+  --s-48: 96px;
+
+  /* Layout */
+  --max-w: 1200px;
+  --max-w-narrow: 680px;
+  --pad: 20px;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(30,21,48,0.06);
+  --shadow-md: 0 4px 12px rgba(30,21,48,0.08);
+  --shadow-lg: 0 12px 32px rgba(30,21,48,0.12);
+  --shadow-sticky: 0 -4px 20px rgba(30,21,48,0.1);
+
+  /* Transitions */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 768px) {
+  :root { --pad: 40px; }
+}
+@media (min-width: 1024px) {
+  :root { --pad: 60px; }
+}
+
+/* ---- RESET ---- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--charcoal);
+  background: #FDFCFE;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+button { font-family: var(--font); cursor: pointer; border: none; background: none; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+
+/* ---- CONTAINER ---- */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+.container--narrow {
+  max-width: var(--max-w-narrow);
+}
+
+/* ---- TYPOGRAPHY ---- */
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+h1, .h1 {
+  font-size: clamp(1.625rem, 4.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: var(--deep);
+}
+h2, .h2 {
+  font-size: clamp(1.375rem, 3.5vw, 2.125rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--deep);
+}
+h3, .h3 {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--deep);
+}
+.body-lg { font-size: 17px; line-height: 1.65; color: var(--warm-grey); }
+.body { font-size: 15px; line-height: 1.6; color: var(--warm-grey); }
+.body-sm { font-size: 13px; line-height: 1.5; color: var(--warm-grey); }
+.price-display {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--deep);
+  font-variant-numeric: tabular-nums;
+}
+.price-compare {
+  font-size: 0.9375rem;
+  color: var(--warm-grey);
+  text-decoration: line-through;
+}
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 32px;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: all 200ms var(--ease);
+  min-height: 52px;
+  text-align: center;
+}
+.btn--primary {
+  background: #7B5EA7;
+  color: var(--white);
+  width: 100%;
+}
+.btn--primary:hover { background: #6B4E97; }
+.btn--primary:active { transform: scale(0.985); }
+.btn--secondary {
+  background: transparent;
+  color: var(--deep);
+  border: 2px solid var(--border);
+  width: 100%;
+}
+.btn--secondary:hover { border-color: var(--charcoal); }
+.btn--ghost {
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.btn--ghost:hover { color: var(--accent-hover); }
+
+/* ---- IMAGE PLACEHOLDERS ---- */
+.img-ph {
+  background: var(--cream-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--warm-grey);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  padding: 16px;
+  overflow: hidden;
+  position: relative;
+}
+.img-ph::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px dashed var(--sand);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.img-ph svg {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 8px;
+  opacity: 0.4;
+}
+
+/* ---- SECTION SPACING ---- */
+.section {
+  padding: var(--s-32) 0;
+}
+@media (min-width: 768px) {
+  .section { padding: var(--s-48) 0; }
+}
+
+/* ---- ANNOUNCEMENT BAR ---- */
+.announce-bar {
+  background: #2E1A47;
+  color: #F0EAF8;
+  text-align: center;
+  padding: 10px var(--pad);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.announce-bar strong { font-weight: 700; }
+
+/* ============================================= */
+/* SECTION 1: HERO / FIRST FOLD                  */
+/* ============================================= */
+.hero {
+  padding-top: var(--s-16);
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 768px) {
+  .hero__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+}
+@media (min-width: 1024px) {
+  .hero__grid { gap: 64px; }
+}
+
+/* Gallery */
+.hero__gallery { position: relative; }
+.hero__main-img {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  width: 100%;
+}
+.hero__thumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  justify-content: center;
+}
+.hero__thumb {
+  width: 56px; height: 56px;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 200ms var(--ease);
+  flex-shrink: 0;
+}
+.hero__thumb.active,
+.hero__thumb:hover { border-color: #7B5EA7; }
+
+@media (min-width: 768px) {
+  .hero__gallery {
+    position: sticky;
+    top: 24px;
+  }
+  .hero__thumbs { justify-content: flex-start; }
+}
+
+/* Product Info */
+.hero__info { display: flex; flex-direction: column; gap: 20px; }
+
+/* Stars */
+.stars { display: inline-flex; align-items: center; gap: 6px; }
+.stars__icons { color: var(--gold); font-size: 15px; letter-spacing: 1px; }
+.stars__count {
+  font-size: 13px;
+  color: var(--warm-grey);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.stars__count:hover { color: var(--charcoal); }
+
+/* Variant Pills */
+.variants { display: flex; flex-direction: column; gap: 10px; }
+.variants__label { font-size: 13px; font-weight: 600; color: var(--charcoal); }
+.variants__pills { display: flex; gap: 10px; }
+.variant-pill {
+  flex: 1;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 200ms var(--ease);
+  background: var(--white);
+  min-height: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.variant-pill:hover { border-color: var(--warm-grey); }
+.variant-pill.active {
+  border-color: #7B5EA7;
+  background: #F5F0FA;
+}
+.variant-pill__qty { font-size: 12px; color: var(--warm-grey); font-weight: 500; }
+.variant-pill__price { font-size: 16px; font-weight: 700; color: var(--deep); }
+.variant-pill__save { font-size: 11px; font-weight: 600; color: var(--green); }
+
+/* Subscription Toggle */
+.sub-toggle { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.sub-option {
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 200ms var(--ease);
+}
+.sub-option + .sub-option { border-top: 1px solid var(--border); }
+.sub-option.active { background: #F5F0FA; }
+.sub-radio {
+  width: 20px; height: 20px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 1px;
+  position: relative;
+  transition: border-color 200ms var(--ease);
+}
+.sub-option.active .sub-radio { border-color: #7B5EA7; }
+.sub-option.active .sub-radio::after {
+  content: '';
+  width: 10px; height: 10px;
+  background: #7B5EA7;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.sub-option__label { font-size: 14px; font-weight: 600; color: var(--charcoal); }
+.sub-option__detail { font-size: 13px; color: var(--warm-grey); margin-top: 2px; }
+.sub-option__save {
+  display: inline-block;
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  margin-left: 6px;
+}
+
+/* Trust */
+.trust-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--warm-grey);
+  padding: 6px 0;
+}
+.trust-item__icon {
+  width: 18px; height: 18px;
+  flex-shrink: 0;
+  opacity: 0.55;
+}
+
+/* ============================================= */
+/* SECTION 2: PAIN POINTS                        */
+/* ============================================= */
+.pain-section { background: var(--cream); }
+.pain-header { text-align: center; margin-bottom: var(--s-16); }
+.pain-header .eyebrow { margin-bottom: var(--s-4); }
+.pain-header h2 { margin-bottom: var(--s-4); }
+
+.pain-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 768px) {
+  .pain-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+}
+.pain-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: var(--shadow-sm);
+}
+.pain-card__img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--cream-dark);
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  font-size: 0;
+  color: transparent;
+}
+.pain-card__title { font-size: 15px; font-weight: 700; color: var(--deep); margin-bottom: 4px; }
+.pain-card__text { font-size: 14px; color: var(--warm-grey); line-height: 1.5; }
+
+/* ============================================= */
+/* SECTION 3: SOLUTION BRIDGE                    */
+/* ============================================= */
+.bridge__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .bridge__grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+}
+.bridge__image {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+}
+.bridge__content { display: flex; flex-direction: column; gap: 16px; }
+.bridge__content .eyebrow { margin-bottom: -8px; }
+.bridge__checks { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+.check-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.check-icon {
+  width: 28px; height: 28px;
+  background: var(--accent-light);
+  color: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.check-item__text { font-size: 15px; line-height: 1.5; color: var(--charcoal); }
+.check-item__text strong { color: var(--deep); font-weight: 700; }
+
+/* ============================================= */
+/* SECTION 4: KEY INGREDIENTS                    */
+/* ============================================= */
+.ingredients-section {
+  background: #F0EBF5;
+  position: relative;
+  overflow: hidden;
+}
+.ingr-header { text-align: center; margin-bottom: var(--s-16); position: relative; z-index: 1; }
+.ingr-header .eyebrow { margin-bottom: var(--s-4); color: #7B5EA7; }
+.ingr-header h2 { color: var(--deep); }
+.ingr-header h2 em {
+  font-style: italic;
+  color: #7B5EA7;
+}
+
+.ingr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .ingr-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+}
+.ingr-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  transition: transform 200ms var(--ease), box-shadow 200ms var(--ease);
+}
+.ingr-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.ingr-card__visual {
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.ingr-card__badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 5px 8px;
+  border-radius: var(--radius-full);
+  color: #fff;
+  backdrop-filter: blur(4px);
+  line-height: 1.3;
+}
+.ingr-card__badge--blue { background: rgba(90,80,170,0.85); }
+.ingr-card__badge--purple { background: rgba(120,80,160,0.85); }
+.ingr-card__badge--amber { background: rgba(140,90,180,0.85); }
+.ingr-card__badge--green { background: rgba(107,94,167,0.85); }
+
+.ingr-card__body {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.ingr-card__name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--deep);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+@media (min-width: 768px) {
+  .ingr-card__name { font-size: 16px; }
+}
+.ingr-card__benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+}
+.ingr-card__benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--charcoal);
+}
+.ingr-card__benefit-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.ingr-card__benefit-dot svg {
+  width: 10px;
+  height: 10px;
+}
+.ingr-card__benefit-dot--blue { background: rgba(90,80,170,0.12); color: #5A50AA; }
+.ingr-card__benefit-dot--purple { background: rgba(120,80,160,0.12); color: #7850A0; }
+.ingr-card__benefit-dot--amber { background: rgba(155,126,200,0.12); color: #9B7EC8; }
+.ingr-card__benefit-dot--green { background: rgba(107,94,167,0.12); color: #6B5EA7; }
+
+/* Expandable */
+.ingr-expand {
+  margin-top: 24px;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  position: relative;
+  z-index: 1;
+}
+.ingr-expand__trigger {
+  width: 100%;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--charcoal);
+  background: transparent;
+  cursor: pointer;
+  transition: background 150ms var(--ease);
+}
+.ingr-expand__trigger:hover { background: rgba(255,255,255,0.5); }
+.ingr-expand__icon {
+  font-size: 20px;
+  transition: transform 300ms var(--ease);
+  color: var(--warm-grey);
+}
+.ingr-expand.open .ingr-expand__icon { transform: rotate(45deg); }
+.ingr-expand__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 400ms var(--ease);
+}
+.ingr-expand.open .ingr-expand__content { max-height: 300px; }
+.ingr-expand__inner {
+  padding: 0 20px 20px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--warm-grey);
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+/* ============================================= */
+/* RESULTS STATS BAR                             */
+/* ============================================= */
+.stats-bar {
+  background: #3D2266;
+  position: relative;
+  overflow: hidden;
+  padding: var(--s-20) var(--pad);
+}
+.stats-bar__eyebrow {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: var(--s-12);
+  position: relative;
+  z-index: 1;
+}
+.stats-bar__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 16px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 768px) {
+  .stats-bar__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+}
+.stats-bar__item {
+  text-align: center;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .stats-bar__item + .stats-bar__item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+}
+.stats-bar__number {
+  font-size: 36px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+@media (min-width: 768px) {
+  .stats-bar__number { font-size: 44px; }
+}
+.stats-bar__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.3;
+}
+.stats-bar__sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 2px;
+}
+
+/* ============================================= */
+/* SECTION 5: TIMELINE                           */
+/* ============================================= */
+.timeline-header { text-align: center; margin-bottom: var(--s-16); }
+.timeline-header .eyebrow { margin-bottom: var(--s-4); }
+
+.timeline {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 768px) {
+  .timeline { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+}
+.timeline__item {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  position: relative;
+}
+.timeline__img {
+  aspect-ratio: 16 / 10;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.timeline__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #7B5EA7;
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+.timeline__progress {
+  height: 4px;
+  background: var(--sand);
+  position: relative;
+}
+.timeline__progress-fill {
+  height: 100%;
+  background: #7B5EA7;
+  border-radius: 0 2px 2px 0;
+  transition: width 0.3s var(--ease);
+}
+.timeline__body {
+  padding: 16px 20px 20px;
+}
+.timeline__week {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+.timeline__title { font-size: 16px; font-weight: 700; color: var(--deep); margin-bottom: 6px; }
+.timeline__text { font-size: 14px; color: var(--warm-grey); line-height: 1.55; }
+.timeline__disclaimer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--warm-grey);
+  font-style: italic;
+  margin-top: var(--s-12);
+}
+
+/* ============================================= */
+/* SOCIAL PROOF SECTION (Reviews Hub)            */
+/* ============================================= */
+.social-proof { background: var(--cream); }
+.sp-header { text-align: center; margin-bottom: var(--s-8); }
+.sp-header .eyebrow { margin-bottom: var(--s-4); }
+.sp-rating { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px; }
+.sp-rating__stars { color: var(--gold); font-size: 22px; letter-spacing: 2px; }
+.sp-rating__text { font-size: 14px; color: var(--warm-grey); }
+
+/* Tabs */
+.sp-tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: var(--s-12); }
+.sp-tab {
+  flex: 1;
+  padding: 14px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--warm-grey);
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 200ms var(--ease);
+  background: none;
+}
+.sp-tab:hover { color: var(--charcoal); }
+.sp-tab.active { color: #7B5EA7; border-bottom-color: #7B5EA7; }
+
+/* Tab Content */
+.sp-tab-content { display: none; }
+.sp-tab-content.active { display: block; }
+
+/* Filters */
+.sp-filters {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+  margin-bottom: var(--s-8);
+}
+.sp-filters::-webkit-scrollbar { display: none; }
+.sp-filter {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--warm-grey);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 200ms var(--ease);
+  min-height: 36px;
+}
+.sp-filter:hover { border-color: var(--charcoal); color: var(--charcoal); }
+.sp-filter.active { background: #7B5EA7; color: var(--white); border-color: #7B5EA7; }
+
+/* Video Grid */
+.sp-video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+@media (min-width: 768px) {
+  .sp-video-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+}
+@media (min-width: 1024px) {
+  .sp-video-grid { grid-template-columns: repeat(6, 1fr); gap: 12px; }
+}
+.sp-video {
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+.sp-video__play {
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 200ms var(--ease);
+}
+.sp-video:hover .sp-video__play { background: rgba(255,255,255,0.4); }
+.sp-video__name {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  z-index: 1;
+}
+.sp-video__play::after {
+  content: '';
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 6px 0 6px 11px;
+  border-color: transparent transparent transparent white;
+  margin-left: 2px;
+}
+
+/* Written Reviews — Ka'Chava style layout */
+.sp-written-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+@media (min-width: 768px) {
+  .sp-written-layout {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+/* Toolbar row: search + sort */
+.sp-written-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+@media (min-width: 768px) {
+  .sp-written-toolbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.sp-search {
+  position: relative;
+  flex: 1;
+  max-width: 480px;
+}
+.sp-search__input {
+  width: 100%;
+  padding: 12px 44px 12px 16px;
+  font-size: 14px;
+  font-family: var(--font);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--charcoal);
+  outline: none;
+  transition: border-color 200ms var(--ease);
+}
+.sp-search__input::placeholder { color: var(--warm-grey); }
+.sp-search__input:focus { border-color: var(--accent); }
+.sp-search__icon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+.sp-sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--charcoal);
+}
+.sp-sort__select {
+  padding: 10px 36px 10px 14px;
+  font-size: 14px;
+  font-family: var(--font);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--charcoal);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238B6E52' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  cursor: pointer;
+  outline: none;
+}
+.sp-sort__select:focus { border-color: var(--accent); }
+
+/* Meta row: count + Write a Review */
+.sp-written-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.sp-written-count {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+.sp-write-review {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 200ms var(--ease);
+}
+.sp-write-review:hover { color: var(--accent); }
+
+/* Mobile filter toggle button */
+.sp-filter-toggle {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--charcoal);
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: all 200ms var(--ease);
+}
+.sp-filter-toggle:hover { border-color: var(--charcoal); }
+@media (min-width: 768px) {
+  .sp-filter-toggle { display: none; }
+}
+
+/* Sidebar */
+.sp-sidebar {
+  display: none;
+  width: 100%;
+  margin-bottom: 24px;
+}
+.sp-sidebar.open { display: block; }
+@media (min-width: 768px) {
+  .sp-sidebar {
+    display: block !important;
+    width: 260px;
+    min-width: 260px;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+  }
+}
+.sp-sidebar__group { margin-bottom: 20px; }
+.sp-sidebar__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 10px;
+}
+.sp-sidebar__clear {
+  float: right;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--warm-grey);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.sp-sidebar__clear:hover { color: var(--charcoal); }
+
+/* Star rating filter rows */
+.sp-star-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--charcoal);
+}
+.sp-star-row input[type="radio"] {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.sp-star-row__stars { color: var(--gold); font-size: 14px; letter-spacing: 1px; }
+.sp-star-row__count { color: var(--warm-grey); font-size: 12px; }
+.sp-star-row__pct { margin-left: auto; font-size: 12px; color: var(--warm-grey); font-weight: 600; }
+
+/* Concern checkbox filters */
+.sp-concern-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--charcoal);
+}
+.sp-concern-row input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* Keyword pills */
+.sp-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.sp-keyword {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--charcoal);
+  cursor: pointer;
+  transition: all 200ms var(--ease);
+}
+.sp-keyword:hover { border-color: var(--charcoal); }
+.sp-keyword.active { background: #7B5EA7; color: var(--white); border-color: #7B5EA7; }
+
+/* Reviews list (right side) */
+.sp-reviews-col { flex: 1; min-width: 0; }
+
+/* Individual review card — Ka'Chava style */
+.sp-written-review {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.sp-written-review:first-child { padding-top: 0; }
+.sp-written-review__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.sp-written-review__stars { color: var(--gold); font-size: 16px; letter-spacing: 2px; }
+.sp-written-review__date { font-size: 13px; color: var(--warm-grey); }
+.sp-written-review__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--deep);
+  margin-bottom: 8px;
+}
+.sp-written-review__body {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--charcoal);
+}
+
+/* Author card — beige box like Ka'Chava */
+.sp-author-card {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 16px;
+  padding: 14px 20px;
+  background: var(--cream-dark);
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+.sp-author-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.sp-author-card__name {
+  font-weight: 700;
+  color: var(--deep);
+}
+.sp-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
+}
+.sp-verified__icon {
+  width: 16px;
+  height: 16px;
+  fill: var(--green);
+}
+.sp-author-card__concern-label {
+  font-weight: 700;
+  color: var(--deep);
+  font-size: 13px;
+}
+.sp-author-card__concern-value {
+  color: var(--charcoal);
+  font-size: 13px;
+}
+
+.sp-load-more { text-align: center; margin-top: var(--s-12); }
+
+/* ============================================= */
+/* SECTION 7: HOW TO USE                         */
+/* ============================================= */
+.steps-header { text-align: center; margin-bottom: var(--s-16); }
+.steps-header .eyebrow { margin-bottom: var(--s-4); }
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (min-width: 768px) {
+  .steps-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+}
+.step { text-align: center; }
+.step__icon {
+  width: 64px; height: 64px;
+  background: var(--cream);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--s-4);
+  font-size: 24px;
+}
+.step__num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.step__title { font-size: 15px; font-weight: 700; color: var(--deep); margin-bottom: 4px; }
+.step__text { font-size: 13px; color: var(--warm-grey); line-height: 1.45; }
+
+/* ============================================= */
+/* SECTION 8: WHO IT'S FOR                       */
+/* ============================================= */
+.who-section { background: var(--cream); }
+.who-header { text-align: center; margin-bottom: var(--s-16); }
+.who-header .eyebrow { margin-bottom: var(--s-4); }
+
+.who-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .who-grid { grid-template-columns: 1fr 1fr; }
+}
+.who-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+.who-card__title { font-size: 16px; font-weight: 700; color: var(--deep); margin-bottom: 12px; }
+.who-card__list { display: flex; flex-direction: column; gap: 10px; }
+.who-card__item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--charcoal);
+}
+.who-card__check {
+  color: var(--green);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ============================================= */
+/* SECTION 9: FAQ                                */
+/* ============================================= */
+.faq-header { text-align: center; margin-bottom: var(--s-16); }
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: box-shadow 200ms var(--ease);
+}
+.faq-item.open { box-shadow: var(--shadow-sm); }
+.faq-trigger {
+  width: 100%;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--deep);
+  text-align: left;
+  background: var(--white);
+  cursor: pointer;
+  transition: background 150ms var(--ease);
+}
+.faq-trigger:hover { background: #F5F0FA; }
+.faq-chevron {
+  flex-shrink: 0;
+  width: 20px; height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--warm-grey);
+  transition: transform 300ms var(--ease);
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 400ms var(--ease);
+}
+.faq-answer__inner {
+  padding: 0 20px 20px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--warm-grey);
+}
+
+/* ============================================= */
+/* SECTION 10: FINAL CTA — Before/After + Premium ATC */
+/* ============================================= */
+.final-cta {
+  background: #F0EBF5;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta__layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-16);
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .final-cta__layout {
+    flex-direction: row;
+    gap: var(--s-24);
+    align-items: center;
+  }
+}
+.final-cta__visual {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+@media (min-width: 768px) {
+  .final-cta__visual { width: 42%; max-width: none; }
+}
+.final-cta__ba {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.final-cta__ba-img {
+  aspect-ratio: 3 / 4;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.final-cta__ba-label {
+  position: absolute;
+  bottom: 10px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+}
+.final-cta__ba-img:first-child .final-cta__ba-label { left: 10px; }
+.final-cta__ba-img:last-child .final-cta__ba-label { right: 10px; }
+.final-cta__play {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px; height: 56px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(6px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 200ms var(--ease);
+}
+.final-cta__play:hover { background: rgba(255,255,255,0.5); }
+.final-cta__play::after {
+  content: '';
+  border-style: solid;
+  border-width: 9px 0 9px 16px;
+  border-color: transparent transparent transparent #fff;
+  margin-left: 3px;
+}
+/* Final CTA — Price Row */
+.final-cta__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+  justify-content: center;
+}
+@media (min-width: 768px) { .final-cta__price-row { justify-content: flex-start; } }
+.final-cta__price {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--deep);
+  letter-spacing: -0.02em;
+}
+.final-cta__price-compare {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--warm-grey);
+  text-decoration: line-through;
+}
+/* Final CTA — Variant Pills Override */
+.final-cta__variants {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.final-cta__variants-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+.final-cta__variants .variant-pill {
+  background: var(--white);
+}
+.final-cta__variants .variant-pill.active {
+  border-color: #7B5EA7;
+  background: #F5F0FA;
+}
+/* Final CTA — Sub Toggle Override */
+.final-cta__sub-toggle {
+  margin-bottom: 20px;
+}
+.final-cta__sub-toggle .sub-option.active {
+  background: #F5F0FA;
+}
+.final-cta__sub-toggle .sub-option.active .sub-radio {
+  border-color: #7B5EA7;
+}
+.final-cta__sub-toggle .sub-option.active .sub-radio::after {
+  background: #7B5EA7;
+}
+.final-cta__content { flex: 1; text-align: center; }
+@media (min-width: 768px) {
+  .final-cta__content { text-align: left; }
+}
+.final-cta__headline {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--deep);
+  margin-bottom: 8px;
+}
+@media (min-width: 768px) { .final-cta__headline { font-size: 32px; } }
+.final-cta__headline em { font-style: italic; color: #7B5EA7; }
+.final-cta__sub {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--charcoal);
+  margin-bottom: var(--s-12);
+}
+.final-cta__sub strong { color: var(--deep); }
+.final-cta__atc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 18px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background: #7B5EA7;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: opacity 200ms var(--ease), transform 100ms var(--ease);
+  box-shadow: 0 4px 16px rgba(90,61,128,0.3);
+}
+.final-cta__atc:hover { opacity: 0.92; }
+.final-cta__atc:active { transform: scale(0.98); }
+.final-cta__atc-lock { width: 16px; height: 16px; }
+.final-cta__guarantee {
+  font-size: 13px;
+  color: var(--warm-grey);
+  margin-top: 10px;
+}
+@media (min-width: 768px) { .final-cta__guarantee { text-align: left; } }
+.final-cta__trust {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: var(--s-8);
+  justify-content: center;
+}
+@media (min-width: 768px) { .final-cta__trust { justify-content: flex-start; } }
+.final-cta__trust-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 11px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  min-width: 100px;
+}
+.final-cta__trust-badge svg { width: 18px; height: 18px; color: var(--warm-grey); }
+.final-cta__trust-badge strong { font-weight: 700; font-size: 11px; color: var(--deep); }
+.final-cta__trust-badge span { font-size: 10px; color: var(--warm-grey); }
+.final-cta__social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: var(--s-8);
+  justify-content: center;
+}
+@media (min-width: 768px) { .final-cta__social { justify-content: flex-start; } }
+.final-cta__avatars { display: flex; }
+.final-cta__avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-left: -8px;
+  background: #9B7EC8;
+}
+.final-cta__avatar:first-child { margin-left: 0; }
+.final-cta__social-text { font-size: 12px; line-height: 1.4; }
+.final-cta__social-text .stars { color: var(--gold); font-size: 14px; letter-spacing: 1px; }
+.final-cta__social-text strong { display: block; font-size: 13px; font-weight: 700; color: var(--deep); }
+.final-cta__social-text em { font-style: italic; color: var(--warm-grey); font-size: 12px; }
+
+/* ============================================= */
+/* SECTION 11: TEXT REVIEWS                      */
+/* ============================================= */
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: var(--s-12);
+}
+.reviews-summary__stars { color: var(--gold); font-size: 18px; letter-spacing: 1px; margin-bottom: 4px; }
+.reviews-summary__text { font-size: 14px; color: var(--warm-grey); }
+
+.review-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 12px;
+}
+.review-card__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.review-card__stars { color: var(--gold); font-size: 14px; letter-spacing: 1px; }
+.review-card__date { font-size: 12px; color: var(--warm-grey); }
+.review-card__title { font-size: 15px; font-weight: 700; color: var(--deep); margin-bottom: 6px; }
+.review-card__body { font-size: 14px; line-height: 1.6; color: var(--charcoal); font-style: italic; }
+.review-card__author { font-size: 13px; color: var(--warm-grey); margin-top: 10px; }
+.review-card__verified {
+  display: inline-block;
+  background: var(--green-light);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  margin-left: 8px;
+}
+.reviews-more { text-align: center; padding-top: 8px; }
+
+/* ============================================= */
+/* STICKY ATC BAR (MOBILE)                       */
+/* ============================================= */
+.sticky-atc {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FDFCFE;
+  box-shadow: 0 -4px 20px rgba(30,21,48,0.1);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  z-index: 100;
+  transform: translateY(100%);
+  transition: transform 350ms var(--ease);
+}
+.sticky-atc.visible { transform: translateY(0); }
+.sticky-atc__price { font-size: 18px; font-weight: 700; color: var(--deep); }
+.sticky-atc__detail { font-size: 11px; color: var(--warm-grey); }
+.sticky-atc__btn {
+  background: #7B5EA7;
+  color: var(--white);
+  padding: 14px 24px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition: background 200ms var(--ease);
+}
+.sticky-atc__btn:hover { background: #6B4E97; }
+
+@media (min-width: 1024px) {
+  .sticky-atc { display: none !important; }
+}
+
+/* ---- FOOTER ---- */
+.proto-footer {
+  background: #2E1A47;
+  text-align: center;
+  padding: 32px var(--pad);
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  border-top: none;
+}
+
+/* ---- SMOOTH SCROLL FIX ---- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+/* Body padding for sticky bar on mobile */
+@media (max-width: 1023px) {
+  body { padding-bottom: 72px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce-bar">
+  <strong>Free shipping</strong> on all orders over $50 · 30-day money-back guarantee
+</div>
+
+<!-- ================================================ -->
+<!-- S1: HERO / FIRST FOLD                            -->
+<!-- ================================================ -->
+<section class="section hero" id="hero">
+  <div class="container">
+    <div class="hero__grid">
+
+      <!-- Gallery -->
+      <div class="hero__gallery">
+        <div class="img-ph hero__main-img" id="mainImage">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+          Product bottle — front view<br>Hero shot on cream backdrop
+        </div>
+        <div class="hero__thumbs">
+          <div class="img-ph hero__thumb active" onclick="selectThumb(this)" style="font-size:9px;">Front</div>
+          <div class="img-ph hero__thumb" onclick="selectThumb(this)" style="font-size:9px;">Side</div>
+          <div class="img-ph hero__thumb" onclick="selectThumb(this)" style="font-size:9px;">Texture</div>
+          <div class="img-ph hero__thumb" onclick="selectThumb(this)" style="font-size:9px;">In Use</div>
+          <div class="img-ph hero__thumb" onclick="selectThumb(this)" style="font-size:9px;">Scale</div>
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="hero__info">
+        <div class="eyebrow">Gloves In A Bottle</div>
+
+        <h1>Age Lift 5+ Lifting Serum</h1>
+
+        <div class="stars">
+          <span class="stars__icons">★★★★★</span>
+          <a href="#reviews" class="stars__count">127 Reviews</a>
+        </div>
+
+        <p class="body-lg">Targets the 5 visible signs of menopause-related skin aging with clinically-backed actives that work with your changing skin — not against it.</p>
+
+        <!-- Price -->
+        <div style="display:flex;align-items:baseline;gap:10px;">
+          <span class="price-display" id="displayPrice">$74.00</span>
+          <span class="price-compare" id="displayCompare">$78.00</span>
+        </div>
+
+        <!-- Variant Selector -->
+        <div class="variants">
+          <div class="variants__label">Choose your bundle:</div>
+          <div class="variants__pills" id="variantPills">
+            <div class="variant-pill" data-qty="1" data-price="39" data-compare="" onclick="selectVariant(this)">
+              <span class="variant-pill__qty">1 Bottle</span>
+              <span class="variant-pill__price">$39</span>
+            </div>
+            <div class="variant-pill active" data-qty="2" data-price="74" data-compare="78" onclick="selectVariant(this)">
+              <span class="variant-pill__qty">2 Bottles</span>
+              <span class="variant-pill__price">$74</span>
+              <span class="variant-pill__save">Save $4</span>
+            </div>
+            <div class="variant-pill" data-qty="4" data-price="140" data-compare="156" onclick="selectVariant(this)">
+              <span class="variant-pill__qty">4 Bottles</span>
+              <span class="variant-pill__price">$140</span>
+              <span class="variant-pill__save">Save $16</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subscription Toggle -->
+        <div class="sub-toggle" id="subToggle">
+          <div class="sub-option active" data-type="onetime" onclick="selectSub(this)">
+            <div class="sub-radio"></div>
+            <div>
+              <div class="sub-option__label">One-time purchase</div>
+              <div class="sub-option__detail" id="onetimePrice">$74.00</div>
+            </div>
+          </div>
+          <div class="sub-option" data-type="subscribe" onclick="selectSub(this)">
+            <div class="sub-radio"></div>
+            <div>
+              <div class="sub-option__label">Subscribe &amp; Save <span class="sub-option__save">15% OFF</span></div>
+              <div class="sub-option__detail" id="subPrice">$62.90 · Delivered every 30, 60, or 90 days</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ATC -->
+        <div>
+          <button class="btn btn--primary" id="heroAtcBtn">Add to Cart — $74.00</button>
+        </div>
+
+        <!-- Trust -->
+        <div class="trust-row">
+          <div class="trust-item">
+            <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><polyline points="13 2 13 9 20 9"/></svg>
+            Free shipping $50+
+          </div>
+          <div class="trust-item">
+            <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            30-day returns
+          </div>
+          <div class="trust-item">
+            <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Secure checkout
+          </div>
+          <div class="trust-item">
+            <svg class="trust-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Clinically tested
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ -->
+<!-- S-SP: SOCIAL PROOF / REVIEWS HUB                 -->
+<!-- ================================================ -->
+<section class="section social-proof" id="reviews">
+  <div class="container">
+    <!-- Header -->
+    <div class="sp-header">
+      <div class="eyebrow">Real results. Real people.</div>
+      <h2>Over 2,000 women love their skin again</h2>
+      <div class="sp-rating">
+        <span class="sp-rating__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="sp-rating__text">4.9 / 5 — Based on 127 verified reviews</span>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="sp-tabs" role="tablist">
+      <button class="sp-tab active" role="tab" aria-selected="true" onclick="switchSpTab('video')">Video Reviews</button>
+      <button class="sp-tab" role="tab" aria-selected="false" onclick="switchSpTab('written')">Written Reviews</button>
+    </div>
+
+    <!-- VIDEO TAB -->
+    <div class="sp-tab-content active" id="spVideoTab">
+      <!-- Filters -->
+      <div class="sp-filters" role="toolbar" aria-label="Filter reviews by concern">
+        <button class="sp-filter active" onclick="filterReviews(this, 'all')">All</button>
+        <button class="sp-filter" onclick="filterReviews(this, 'firmness')">Firmness</button>
+        <button class="sp-filter" onclick="filterReviews(this, 'hydration')">Hydration</button>
+        <button class="sp-filter" onclick="filterReviews(this, 'glow')">Glow</button>
+        <button class="sp-filter" onclick="filterReviews(this, 'barrier')">Barrier</button>
+      </div>
+
+      <!-- Video Grid: 12 thumbnails -->
+      <div class="sp-video-grid">
+        <div class="sp-video" data-category="firmness" style="background:url('https://images.pexels.com/photos/3764013/pexels-photo-3764013.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+          <div class="sp-video__play"></div>
+          <span class="sp-video__name">Sarah M.</span>
+        </div>
+        <div class="sp-video" data-category="hydration" style="background:url('https://images.pexels.com/photos/3762466/pexels-photo-3762466.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+          <div class="sp-video__play"></div>
+          <span class="sp-video__name">Linda K.</span>
+        </div>
+        <div class="sp-video" data-category="glow" style="background:url('https://images.pexels.com/photos/3756165/pexels-photo-3756165.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+          <div class="sp-video__play"></div>
+          <span class="sp-video__name">Michelle T.</span>
+        </div>
+        <div class="sp-video" data-category="firmness" style="background:url('https://images.pexels.com/photos/3764568/pexels-photo-3764568.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+          <div class="sp-video__play"></div>
+          <span class="sp-video__name">Karen W.</span>
+        </div>
+        <div class="sp-video" data-category="barrier" style="background:url('https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+          <div class="sp-video__play"></div>
+          <span class="sp-video__name">Dana R.</span>
+        </div>
+        <div class="sp-video" data-category="hydration" style="background:url('https://images.pexels.com/photos/3764402/pexels-photo-3764402.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+          <div class="sp-video__play"></div>
+          <span class="sp-video__name">Patricia L.</span>
+        </div>
+        <div class="sp-video" data-category="glow" style="background:url('https://images.pexels.com/photos/3765132/pexels-photo-3765132.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+          <div class="sp-video__play"></div>
+          <span class="sp-video__name">Rachel B.</span>
+        </div>
+        <div class="sp-video" data-category="firmness" style="background:url('https://images.pexels.com/photos/3762800/pexels-photo-3762800.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+          <div class="sp-video__play"></div>
+          <span class="sp-video__name">Angela D.</span>
+        </div>
+        <div class="sp-video" data-category="barrier" style="background:url('https://images.pexels.com/photos/3764651/pexels-photo-3764651.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+          <div class="sp-video__play"></div>
+          <span class="sp-video__name">Janet M.</span>
+        </div>
+        <div class="sp-video" data-category="hydration" style="background:url('https://images.pexels.com/photos/3764260/pexels-photo-3764260.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+          <div class="sp-video__play"></div>
+          <span class="sp-video__name">Diane V.</span>
+        </div>
+        <div class="sp-video" data-category="glow" style="background:url('https://images.pexels.com/photos/3756879/pexels-photo-3756879.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+          <div class="sp-video__play"></div>
+          <span class="sp-video__name">Carol S.</span>
+        </div>
+        <div class="sp-video" data-category="firmness" style="background:url('https://images.pexels.com/photos/3762453/pexels-photo-3762453.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+          <div class="sp-video__play"></div>
+          <span class="sp-video__name">Donna P.</span>
+        </div>
+      </div>
+
+      <div class="sp-load-more">
+        <button class="btn btn--outline" style="min-width:200px;" onclick="this.textContent='Loading…'; setTimeout(()=>this.textContent='No more videos',1200)">Load More</button>
+      </div>
+    </div>
+
+    <!-- WRITTEN TAB — Ka'Chava style -->
+    <div class="sp-tab-content" id="spWrittenTab">
+
+      <!-- Toolbar: search + sort -->
+      <div class="sp-written-toolbar">
+        <div class="sp-search">
+          <input type="text" class="sp-search__input" placeholder="Search reviews by your skin concern, ingredient, etc.." aria-label="Search reviews">
+          <svg class="sp-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <div class="sp-sort">
+          <select class="sp-sort__select" aria-label="Sort reviews">
+            <option>Newest</option>
+            <option>Highest rated</option>
+            <option>Lowest rated</option>
+            <option>Most helpful</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Meta row -->
+      <div class="sp-written-meta">
+        <span class="sp-written-count">127 reviews</span>
+        <a href="#" class="sp-write-review">Write A Review</a>
+      </div>
+
+      <!-- Mobile filter toggle -->
+      <button class="sp-filter-toggle" onclick="toggleWrittenFilters()">Filter Reviews</button>
+
+      <!-- Two-column layout: sidebar + reviews -->
+      <div class="sp-written-layout">
+
+        <!-- LEFT: Filter sidebar -->
+        <aside class="sp-sidebar" id="spSidebar">
+          <!-- Star Rating -->
+          <div class="sp-sidebar__group">
+            <div class="sp-sidebar__label">Filter: <span class="sp-sidebar__clear" onclick="clearWrittenFilters()">Clear all</span></div>
+            <div class="sp-sidebar__label" style="margin-top:12px;">Star Rating</div>
+            <label class="sp-star-row">
+              <input type="radio" name="starFilter" value="all" checked onchange="filterByStar('all')">
+              <span>All</span>
+            </label>
+            <label class="sp-star-row">
+              <input type="radio" name="starFilter" value="5" onchange="filterByStar('5')">
+              <span class="sp-star-row__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="sp-star-row__count">(93)</span>
+              <span class="sp-star-row__pct">73%</span>
+            </label>
+            <label class="sp-star-row">
+              <input type="radio" name="starFilter" value="4" onchange="filterByStar('4')">
+              <span class="sp-star-row__stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+              <span class="sp-star-row__count">(21)</span>
+              <span class="sp-star-row__pct">17%</span>
+            </label>
+            <label class="sp-star-row">
+              <input type="radio" name="starFilter" value="3" onchange="filterByStar('3')">
+              <span class="sp-star-row__stars">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+              <span class="sp-star-row__count">(8)</span>
+              <span class="sp-star-row__pct">6%</span>
+            </label>
+            <label class="sp-star-row">
+              <input type="radio" name="starFilter" value="2" onchange="filterByStar('2')">
+              <span class="sp-star-row__stars">&#9733;&#9733;&#9734;&#9734;&#9734;</span>
+              <span class="sp-star-row__count">(3)</span>
+              <span class="sp-star-row__pct">2%</span>
+            </label>
+            <label class="sp-star-row">
+              <input type="radio" name="starFilter" value="1" onchange="filterByStar('1')">
+              <span class="sp-star-row__stars">&#9733;&#9734;&#9734;&#9734;&#9734;</span>
+              <span class="sp-star-row__count">(2)</span>
+              <span class="sp-star-row__pct">2%</span>
+            </label>
+          </div>
+
+          <!-- Skin Concern -->
+          <div class="sp-sidebar__group">
+            <div class="sp-sidebar__label">Skin Concern</div>
+            <label class="sp-concern-row"><input type="checkbox" onchange="applyConcernFilter()"> Firmness &amp; Lifting</label>
+            <label class="sp-concern-row"><input type="checkbox" onchange="applyConcernFilter()"> Hydration &amp; Plumping</label>
+            <label class="sp-concern-row"><input type="checkbox" onchange="applyConcernFilter()"> Glow &amp; Radiance</label>
+            <label class="sp-concern-row"><input type="checkbox" onchange="applyConcernFilter()"> Barrier &amp; Sensitivity</label>
+          </div>
+
+          <!-- Keywords -->
+          <div class="sp-sidebar__group">
+            <div class="sp-sidebar__label">Key words</div>
+            <div class="sp-keywords">
+              <button class="sp-keyword">PDRN</button>
+              <button class="sp-keyword">Niacinamide</button>
+              <button class="sp-keyword">Peptides</button>
+              <button class="sp-keyword">Firmness</button>
+              <button class="sp-keyword">Glow</button>
+              <button class="sp-keyword">Fine lines</button>
+              <button class="sp-keyword">Hydrating</button>
+              <button class="sp-keyword">Texture</button>
+              <button class="sp-keyword">Redness</button>
+              <button class="sp-keyword">Pores</button>
+              <button class="sp-keyword">Sensitive</button>
+              <button class="sp-keyword">Jawline</button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- RIGHT: Reviews list -->
+        <div class="sp-reviews-col" id="writtenReviewsList">
+
+          <div class="sp-written-review" data-category="firmness" data-stars="5">
+            <div class="sp-written-review__header">
+              <span class="sp-written-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="sp-written-review__date">March 12, 2026</span>
+            </div>
+            <div class="sp-written-review__title">My jawline looks lifted!</div>
+            <div class="sp-written-review__body">After just 3 weeks, I noticed my jawline looks more defined and my nasolabial folds are softer. My husband even commented that I look rested. I'm 52 and this is the first serum that actually delivered on its promises.</div>
+            <div class="sp-author-card">
+              <div class="sp-author-card__top">
+                <span class="sp-author-card__name">Sarah M.</span>
+                <span class="sp-verified"><svg class="sp-verified__icon" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke="currentColor" stroke-width="2"/></svg> Verified Buyer</span>
+              </div>
+              <div><span class="sp-author-card__concern-label">Used for: </span><span class="sp-author-card__concern-value">Firmness &amp; Lifting</span></div>
+            </div>
+          </div>
+
+          <div class="sp-written-review" data-category="hydration" data-stars="5">
+            <div class="sp-written-review__header">
+              <span class="sp-written-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="sp-written-review__date">March 8, 2026</span>
+            </div>
+            <div class="sp-written-review__title">Dry patches GONE in 10 days</div>
+            <div class="sp-written-review__body">Perimenopause wrecked my skin — dry, flaky, especially around my nose and forehead. Age Lift 5+ changed everything. My skin feels plump and bouncy again. I stopped using my heavy night cream because I don't need it anymore.</div>
+            <div class="sp-author-card">
+              <div class="sp-author-card__top">
+                <span class="sp-author-card__name">Linda K.</span>
+                <span class="sp-verified"><svg class="sp-verified__icon" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke="currentColor" stroke-width="2"/></svg> Verified Buyer</span>
+              </div>
+              <div><span class="sp-author-card__concern-label">Used for: </span><span class="sp-author-card__concern-value">Hydration &amp; Plumping</span></div>
+            </div>
+          </div>
+
+          <div class="sp-written-review" data-category="glow" data-stars="5">
+            <div class="sp-written-review__header">
+              <span class="sp-written-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="sp-written-review__date">February 25, 2026</span>
+            </div>
+            <div class="sp-written-review__title">People ask what I'm doing differently</div>
+            <div class="sp-written-review__body">The glow is real. I used to look dull and tired no matter how much sleep I got. Now my coworkers keep asking if I changed my foundation. Nope — just this serum morning and night. Worth every penny.</div>
+            <div class="sp-author-card">
+              <div class="sp-author-card__top">
+                <span class="sp-author-card__name">Michelle T.</span>
+                <span class="sp-verified"><svg class="sp-verified__icon" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke="currentColor" stroke-width="2"/></svg> Verified Buyer</span>
+              </div>
+              <div><span class="sp-author-card__concern-label">Used for: </span><span class="sp-author-card__concern-value">Glow &amp; Radiance</span></div>
+            </div>
+          </div>
+
+          <div class="sp-written-review" data-category="barrier" data-stars="4">
+            <div class="sp-written-review__header">
+              <span class="sp-written-review__stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+              <span class="sp-written-review__date">February 18, 2026</span>
+            </div>
+            <div class="sp-written-review__title">Finally, no more redness and sensitivity</div>
+            <div class="sp-written-review__body">My skin has been super reactive since I turned 44. Everything irritated it. This serum calmed it down within the first week. The redness around my cheeks has faded significantly. I can finally wear less concealer.</div>
+            <div class="sp-author-card">
+              <div class="sp-author-card__top">
+                <span class="sp-author-card__name">Dana R.</span>
+                <span class="sp-verified"><svg class="sp-verified__icon" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke="currentColor" stroke-width="2"/></svg> Verified Buyer</span>
+              </div>
+              <div><span class="sp-author-card__concern-label">Used for: </span><span class="sp-author-card__concern-value">Barrier &amp; Sensitivity</span></div>
+            </div>
+          </div>
+
+          <div class="sp-written-review" data-category="firmness" data-stars="5">
+            <div class="sp-written-review__header">
+              <span class="sp-written-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="sp-written-review__date">February 10, 2026</span>
+            </div>
+            <div class="sp-written-review__title">Neck and décolletage look 10 years younger</div>
+            <div class="sp-written-review__body">I started applying it on my neck and chest too. The crepey texture is smoothing out and my skin feels thicker, more resilient. I've tried dozens of serums — this one is different. The PDRN ingredient is a game-changer.</div>
+            <div class="sp-author-card">
+              <div class="sp-author-card__top">
+                <span class="sp-author-card__name">Karen W.</span>
+                <span class="sp-verified"><svg class="sp-verified__icon" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke="currentColor" stroke-width="2"/></svg> Verified Buyer</span>
+              </div>
+              <div><span class="sp-author-card__concern-label">Used for: </span><span class="sp-author-card__concern-value">Firmness &amp; Lifting</span></div>
+            </div>
+          </div>
+
+          <div class="sp-written-review" data-category="hydration" data-stars="5">
+            <div class="sp-written-review__header">
+              <span class="sp-written-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="sp-written-review__date">January 29, 2026</span>
+            </div>
+            <div class="sp-written-review__title">Better than the $200 serum I was using</div>
+            <div class="sp-written-review__body">I switched from a luxury brand that was $200/oz. This serum absorbs faster, keeps my skin hydrated all day, and my fine lines around my eyes are visibly softer. My subscribe &amp; save order is already set up — not going back.</div>
+            <div class="sp-author-card">
+              <div class="sp-author-card__top">
+                <span class="sp-author-card__name">Patricia L.</span>
+                <span class="sp-verified"><svg class="sp-verified__icon" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke="currentColor" stroke-width="2"/></svg> Verified Buyer</span>
+              </div>
+              <div><span class="sp-author-card__concern-label">Used for: </span><span class="sp-author-card__concern-value">Hydration &amp; Plumping, Glow &amp; Radiance</span></div>
+            </div>
+          </div>
+
+          <div class="sp-load-more">
+            <button class="btn btn--outline" style="min-width:200px;" onclick="this.textContent='Loading…'; setTimeout(()=>this.textContent='No more reviews',1200)">Load More</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ -->
+<!-- S4: KEY INGREDIENTS                              -->
+<!-- ================================================ -->
+<section class="section ingredients-section" id="ingredients">
+  <div class="container">
+    <div class="ingr-header">
+      <div class="eyebrow">Why you'll love Age Lift 5+</div>
+      <h2>Powerful Ingredients for <em>Ageless Skin</em></h2>
+      <p class="body" style="max-width:560px;margin:8px auto 0;">We've combined cutting-edge science with nutrient-rich botanical oils to deliver visible anti-aging results — fast.</p>
+    </div>
+    <div class="ingr-grid">
+      <!-- Card 1: PDRN -->
+      <div class="ingr-card">
+        <div class="ingr-card__visual" style="background:url('https://images.pexels.com/photos/25626518/pexels-photo-25626518.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop') center/cover no-repeat, #7B5EA7;" role="img" aria-label="DNA helix representing PDRN ingredient">
+          <span class="ingr-card__badge ingr-card__badge--blue">Breakthrough Ingredient</span>
+        </div>
+        <div class="ingr-card__body">
+          <div class="ingr-card__name">PDRN</div>
+          <div class="ingr-card__benefits">
+            <div class="ingr-card__benefit">
+              <span class="ingr-card__benefit-dot ingr-card__benefit-dot--blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+              Boosts skin regeneration &amp; repair
+            </div>
+            <div class="ingr-card__benefit">
+              <span class="ingr-card__benefit-dot ingr-card__benefit-dot--blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+              The newest anti-aging breakthrough
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2: Grape Seed Oil -->
+      <div class="ingr-card">
+        <div class="ingr-card__visual" style="background:url('https://images.pexels.com/photos/760281/pexels-photo-760281.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop') center/cover no-repeat, #7B5EA7;" role="img" aria-label="Grapes and grape seed oil">
+          <span class="ingr-card__badge ingr-card__badge--purple">Antioxidant-Rich</span>
+        </div>
+        <div class="ingr-card__body">
+          <div class="ingr-card__name">Grape Seed Oil</div>
+          <div class="ingr-card__benefits">
+            <div class="ingr-card__benefit">
+              <span class="ingr-card__benefit-dot ingr-card__benefit-dot--purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+              Protects collagen &amp; elastin
+            </div>
+            <div class="ingr-card__benefit">
+              <span class="ingr-card__benefit-dot ingr-card__benefit-dot--purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+              Fights free radicals &amp; fine lines
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3: Macadamia & Meadowfoam Oils -->
+      <div class="ingr-card">
+        <div class="ingr-card__visual" style="background:url('https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop') center/cover no-repeat, #7B5EA7;" role="img" aria-label="Macadamia nuts and natural oils">
+          <span class="ingr-card__badge ingr-card__badge--amber">Deeply Nourishing</span>
+        </div>
+        <div class="ingr-card__body">
+          <div class="ingr-card__name">Macadamia &amp; Meadowfoam Oils</div>
+          <div class="ingr-card__benefits">
+            <div class="ingr-card__benefit">
+              <span class="ingr-card__benefit-dot ingr-card__benefit-dot--amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+              Intense hydration &amp; barrier support
+            </div>
+            <div class="ingr-card__benefit">
+              <span class="ingr-card__benefit-dot ingr-card__benefit-dot--amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+              Silky-soft, radiant glow
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4: Peptides + Niacinamide -->
+      <div class="ingr-card">
+        <div class="ingr-card__visual" style="background:url('https://images.pexels.com/photos/4841274/pexels-photo-4841274.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop') center/cover no-repeat, #7B5EA7;" role="img" aria-label="Molecular structure representing peptides and niacinamide">
+          <span class="ingr-card__badge ingr-card__badge--green">Clinically Proven</span>
+        </div>
+        <div class="ingr-card__body">
+          <div class="ingr-card__name">Peptides + Niacinamide</div>
+          <div class="ingr-card__benefits">
+            <div class="ingr-card__benefit">
+              <span class="ingr-card__benefit-dot ingr-card__benefit-dot--green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+              Firms, smooths &amp; brightens
+            </div>
+            <div class="ingr-card__benefit">
+              <span class="ingr-card__benefit-dot ingr-card__benefit-dot--green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>
+              Even tone &amp; refined pores
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ingr-expand" id="ingrExpand">
+      <button class="ingr-expand__trigger" onclick="toggleExpand('ingrExpand')">
+        View Full Ingredient List
+        <span class="ingr-expand__icon">+</span>
+      </button>
+      <div class="ingr-expand__content">
+        <div class="ingr-expand__inner">
+          Water (Aqua), Polydeoxyribonucleotide, Niacinamide, Palmitoyl Pentapeptide-4, Glycerin, Butylene Glycol, Sodium Hyaluronate, Panthenol, Allantoin, Centella Asiatica Extract, Ceramide NP, Ceramide AP, Ceramide EOP, Phytosphingosine, Cholesterol, Carbomer, Xanthan Gum, Ethylhexylglycerin, Disodium EDTA, Phenoxyethanol.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ -->
+<!-- STATS BAR: VISIBLE RESULTS                       -->
+<!-- ================================================ -->
+<div class="stats-bar">
+  <div class="stats-bar__eyebrow">Visible Results You'll Love</div>
+  <div class="stats-bar__grid">
+    <div class="stats-bar__item">
+      <div class="stats-bar__number">+85%</div>
+      <div class="stats-bar__label">Firmer, Lifted Skin</div>
+      <div class="stats-bar__sub">in just 2 weeks</div>
+    </div>
+    <div class="stats-bar__item">
+      <div class="stats-bar__number">-74%</div>
+      <div class="stats-bar__label">Reduction in Fine Lines</div>
+      <div class="stats-bar__sub">in 4 weeks</div>
+    </div>
+    <div class="stats-bar__item">
+      <div class="stats-bar__number">+92%</div>
+      <div class="stats-bar__label">Boost in Hydration</div>
+      <div class="stats-bar__sub">immediate glow</div>
+    </div>
+    <div class="stats-bar__item">
+      <div class="stats-bar__number">+67%</div>
+      <div class="stats-bar__label">Brighter, Even Tone</div>
+      <div class="stats-bar__sub">in 3 weeks</div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================ -->
+<!-- S2: PAIN POINTS                                  -->
+<!-- ================================================ -->
+<section class="section pain-section" id="pain">
+  <div class="container">
+    <div class="pain-header">
+      <div class="eyebrow">The truth about your skin after 40</div>
+      <h2>Your skin is changing. Here's why.</h2>
+      <p class="body" style="max-width:540px;margin:8px auto 0;">Declining estrogen during perimenopause triggers 5 visible changes in your skin. It's not aging — it's a shift your skincare hasn't caught up with.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-card__img" style="background-image:url('https://images.pexels.com/photos/7544826/pexels-photo-7544826.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop');" role="img" aria-label="Close-up of mature skin showing loss of firmness"></div>
+        <div>
+          <div class="pain-card__title">Collagen drops 30% in 5 years</div>
+          <div class="pain-card__text">Skin loses firmness and structure faster than ever before.</div>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card__img" style="background-image:url('https://images.pexels.com/photos/6475987/pexels-photo-6475987.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop');" role="img" aria-label="Close-up of skin showing redness and irritation"></div>
+        <div>
+          <div class="pain-card__title">Barrier function weakens</div>
+          <div class="pain-card__text">Moisture escapes faster. Irritation increases. Redness won't calm down.</div>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card__img" style="background-image:url('https://images.pexels.com/photos/10210352/pexels-photo-10210352.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop');" role="img" aria-label="Close-up of skin showing uneven tone and dullness"></div>
+        <div>
+          <div class="pain-card__title">Cell turnover slows 50%</div>
+          <div class="pain-card__text">Dull, uneven tone. Dark spots linger. Products stop "working."</div>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card__img" style="background-image:url('https://images.pexels.com/photos/7544829/pexels-photo-7544829.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop');" role="img" aria-label="Close-up of skin showing loss of elasticity along jawline"></div>
+        <div>
+          <div class="pain-card__title">Elastin fibers break down</div>
+          <div class="pain-card__text">Sagging along jawline and under eyes that wasn't there a year ago.</div>
+        </div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-card__img" style="background-image:url('https://images.pexels.com/photos/4046564/pexels-photo-4046564.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop');" role="img" aria-label="Close-up of dry dehydrated skin with fine lines"></div>
+        <div>
+          <div class="pain-card__title">Hydration plummets</div>
+          <div class="pain-card__text">Fine lines deepen overnight. Skin feels tight and papery by afternoon.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ -->
+<!-- S3: SOLUTION BRIDGE                              -->
+<!-- ================================================ -->
+<section class="section" id="solution">
+  <div class="container">
+    <div class="bridge__grid">
+      <div class="bridge__image" style="border-radius:var(--radius);background-image:url('https://images.pexels.com/photos/30473027/pexels-photo-30473027.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop');background-size:cover;background-position:center;" role="img" aria-label="Mature woman applying skincare serum to her face"></div>
+      <div class="bridge__content">
+        <div class="eyebrow">Introducing</div>
+        <h2>Age Lift 5+ was designed for exactly this.</h2>
+        <p class="body-lg">Not another generic "anti-aging" serum. Formulated specifically for the hormonal skin changes women experience after 40 — targeting all 5 signs with clinically-backed actives.</p>
+        <div class="bridge__checks">
+          <div class="check-item">
+            <div class="check-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="check-item__text"><strong>Barrier-first formula</strong> — rebuilds what estrogen loss breaks down</div>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            </div>
+            <div class="check-item__text"><strong>5-pathway targeting</strong> — collagen, elastin, hydration, barrier, tone</div>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0-4h18"/></svg>
+            </div>
+            <div class="check-item__text"><strong>Clean, active-dense formula</strong> — no fillers, no fragrance, no irritants</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ -->
+<!-- S5: TIMELINE                                     -->
+<!-- ================================================ -->
+<section class="section" id="timeline">
+  <div class="container">
+    <div class="timeline-header">
+      <div class="eyebrow">Your journey</div>
+      <h2>What to expect, week by week</h2>
+      <p class="body" style="max-width:460px;margin:8px auto 0;">Real results take time. Here's what most women notice at each stage.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline__item">
+        <div class="timeline__img" style="background-image:url('https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop');" role="img" aria-label="Woman touching soft hydrated skin">
+          <div class="timeline__badge">Week 1–2</div>
+        </div>
+        <div class="timeline__progress"><div class="timeline__progress-fill" style="width:25%;"></div></div>
+        <div class="timeline__body">
+          <div class="timeline__title">Hydration kicks in</div>
+          <div class="timeline__text">Skin feels softer, more hydrated. Morning tightness reduces. Barrier begins to stabilize.</div>
+        </div>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__img" style="background-image:url('https://images.pexels.com/photos/3764013/pexels-photo-3764013.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop');" role="img" aria-label="Woman with calmer, even skin tone">
+          <div class="timeline__badge">Week 2–4</div>
+        </div>
+        <div class="timeline__progress"><div class="timeline__progress-fill" style="width:50%;"></div></div>
+        <div class="timeline__body">
+          <div class="timeline__title">Redness calms</div>
+          <div class="timeline__text">Fine lines around eyes look less pronounced. Skin tone starts to even out. Less irritation.</div>
+        </div>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__img" style="background-image:url('https://images.pexels.com/photos/3764568/pexels-photo-3764568.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop');" role="img" aria-label="Woman with firmer looking jawline">
+          <div class="timeline__badge">Week 4–6</div>
+        </div>
+        <div class="timeline__progress"><div class="timeline__progress-fill" style="width:75%;"></div></div>
+        <div class="timeline__body">
+          <div class="timeline__title">Visible firming</div>
+          <div class="timeline__text">Jawline looks tighter. Pores appear smaller. "You look rested" comments begin.</div>
+        </div>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__img" style="background-image:url('https://images.pexels.com/photos/3764407/pexels-photo-3764407.jpeg?auto=compress&cs=tinysrgb&w=400&h=250&fit=crop');" role="img" aria-label="Woman with radiant, transformed skin">
+          <div class="timeline__badge">Week 8+</div>
+        </div>
+        <div class="timeline__progress"><div class="timeline__progress-fill" style="width:100%;"></div></div>
+        <div class="timeline__body">
+          <div class="timeline__title">Full transformation</div>
+          <div class="timeline__text">Improved density and elasticity. Skin looks and feels years younger — from the inside out.</div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline__disclaimer">* Individual results may vary. Based on customer feedback from consistent twice-daily use.</div>
+  </div>
+</section>
+
+<!-- Old S6 removed — merged into Social Proof section above Pain Points -->
+
+<!-- ================================================ -->
+<!-- S7: HOW TO USE                                   -->
+<!-- ================================================ -->
+<section class="section" id="howto">
+  <div class="container">
+    <div class="steps-header">
+      <div class="eyebrow">Simple routine</div>
+      <h2>4 steps. 60 seconds. Morning &amp; night.</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 0 0-4 4v2h8V6a4 4 0 0 0-4-4z"/><rect x="4" y="8" width="16" height="14" rx="2"/></svg>
+        </div>
+        <div class="step__num">Step 1</div>
+        <div class="step__title">Cleanse</div>
+        <div class="step__text">Wash face with gentle cleanser. Pat dry.</div>
+      </div>
+      <div class="step">
+        <div class="step__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v6m0 0a4 4 0 1 1 0 8m0-8a4 4 0 1 0 0 8m0 0v6"/></svg>
+        </div>
+        <div class="step__num">Step 2</div>
+        <div class="step__title">Apply</div>
+        <div class="step__text">3–4 drops on fingertips. Dot on forehead, cheeks, chin.</div>
+      </div>
+      <div class="step">
+        <div class="step__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 11V6a2 2 0 0 0-4 0m0 5V4a2 2 0 0 0-4 0m0 7V3a2 2 0 0 0-4 0v9"/><path d="M6 12V9a2 2 0 0 0-4 0v6a8 8 0 0 0 16 0v-3a2 2 0 0 0-4 0"/></svg>
+        </div>
+        <div class="step__num">Step 3</div>
+        <div class="step__title">Press</div>
+        <div class="step__text">Gently press into skin with upward motions. Don't rub.</div>
+      </div>
+      <div class="step">
+        <div class="step__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <div class="step__num">Step 4</div>
+        <div class="step__title">Protect</div>
+        <div class="step__text">Follow with moisturizer. AM: add SPF 30+ sunscreen.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ -->
+<!-- S8: WHO IT'S FOR                                 -->
+<!-- ================================================ -->
+<section class="section who-section" id="who">
+  <div class="container">
+    <div class="who-header">
+      <div class="eyebrow">Is this for me?</div>
+      <h2>Made for women whose skin is going through the change</h2>
+    </div>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-card__title">Perfect for you if:</div>
+        <div class="who-card__list">
+          <div class="who-card__item"><span class="who-card__check">✓</span> You're 40–55 and noticing your skin changing fast</div>
+          <div class="who-card__item"><span class="who-card__check">✓</span> Products that used to work just… don't anymore</div>
+          <div class="who-card__item"><span class="who-card__check">✓</span> You want clinical results without harsh treatments</div>
+          <div class="who-card__item"><span class="who-card__check">✓</span> Perimenopause or menopause has affected your skin</div>
+          <div class="who-card__item"><span class="who-card__check">✓</span> You're tired of serums that promise everything and deliver nothing</div>
+        </div>
+      </div>
+      <div class="who-card">
+        <div class="who-card__title">Also great for:</div>
+        <div class="who-card__list">
+          <div class="who-card__item"><span class="who-card__check">✓</span> Women 50+ looking for targeted anti-aging support</div>
+          <div class="who-card__item"><span class="who-card__check">✓</span> Post-menopausal skin that needs barrier repair</div>
+          <div class="who-card__item"><span class="who-card__check">✓</span> Sensitive skin that reacts to retinol or acids</div>
+          <div class="who-card__item"><span class="who-card__check">✓</span> Anyone wanting a clean, science-backed formula</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ -->
+<!-- S9: FAQ                                          -->
+<!-- ================================================ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="faq-header">
+      <h2>Got questions? We have answers.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-trigger" onclick="toggleFaq(this)">
+          How is this different from regular anti-aging serums?
+          <span class="faq-chevron">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer" style="max-height:300px;">
+          <div class="faq-answer__inner">Most serums target wrinkles with retinol or vitamin C. Age Lift 5+ addresses the root cause — the hormonal shift that changes how your skin functions. It rebuilds barrier integrity, stimulates collagen at the DNA level with PDRN, and targets all 5 menopausal skin changes simultaneously.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" onclick="toggleFaq(this)">
+          Is it safe for sensitive skin?
+          <span class="faq-chevron">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer__inner">Yes. No retinol, no acids, no fragrance. Formulated specifically for mature skin that tends toward sensitivity. Dermatologist-tested and hypoallergenic.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" onclick="toggleFaq(this)">
+          When will I see results?
+          <span class="faq-chevron">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer__inner">Most women notice softer, more hydrated skin in the first week. Visible firming and lifting typically appears at 4–6 weeks with consistent twice-daily use. Full transformation at 8+ weeks.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" onclick="toggleFaq(this)">
+          Can I use it with my current skincare routine?
+          <span class="faq-chevron">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer__inner">Absolutely. Apply after cleansing, before moisturizer. Compatible with most skincare products. If you use retinol, alternate evenings for best results.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" onclick="toggleFaq(this)">
+          What if it doesn't work for me?
+          <span class="faq-chevron">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer__inner">We offer a 30-day money-back guarantee. If you don't see improvement, we'll refund your purchase — no questions asked. We're that confident.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" onclick="toggleFaq(this)">
+          How long does one bottle last?
+          <span class="faq-chevron">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer__inner">One bottle lasts approximately 30 days with twice-daily use (3–4 drops per application). The 2-bottle bundle is our most popular option for uninterrupted results.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ -->
+<!-- S10: FINAL CTA — Before/After + Premium ATC      -->
+<!-- ================================================ -->
+<section class="section final-cta" id="buy">
+  <div class="container">
+    <div class="final-cta__layout">
+
+      <!-- Left: Before/After photo with play button -->
+      <div class="final-cta__visual">
+        <div class="final-cta__ba">
+          <div class="final-cta__ba-img" style="background:#9B8AAE; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.4); font-size:13px; font-weight:600; letter-spacing:0.05em;">
+            <span style="position:relative;z-index:0;">Photo placeholder</span>
+            <span class="final-cta__ba-label">Before</span>
+          </div>
+          <div class="final-cta__ba-img" style="background:#C4B0D8; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.4); font-size:13px; font-weight:600; letter-spacing:0.05em;">
+            <span style="position:relative;z-index:0;">Photo placeholder</span>
+            <span class="final-cta__ba-label">After 4 Weeks</span>
+          </div>
+        </div>
+        <div class="final-cta__play"></div>
+      </div>
+
+      <!-- Right: CTA content -->
+      <div class="final-cta__content">
+        <h2 class="final-cta__headline">Ready to Turn <em>Back Time?</em></h2>
+        <p class="final-cta__sub">Join thousands of women 40+ who are seeing <strong>younger, firmer, glowing skin</strong> — starting today.</p>
+
+        <!-- Price Display -->
+        <div class="final-cta__price-row">
+          <span class="final-cta__price" id="repeatDisplayPrice">$74.00</span>
+          <span class="final-cta__price-compare" id="repeatDisplayCompare">$78.00</span>
+        </div>
+
+        <!-- Variant Pills -->
+        <div class="final-cta__variants">
+          <div class="final-cta__variants-label">Choose your bundle:</div>
+          <div class="variants__pills" id="repeatVariantPills">
+            <div class="variant-pill" data-qty="1" data-price="39" data-compare="" onclick="selectRepeatVariant(this)">
+              <span class="variant-pill__qty">1 Bottle</span>
+              <span class="variant-pill__price">$39</span>
+            </div>
+            <div class="variant-pill active" data-qty="2" data-price="74" data-compare="78" onclick="selectRepeatVariant(this)">
+              <span class="variant-pill__qty">2 Bottles</span>
+              <span class="variant-pill__price">$74</span>
+              <span class="variant-pill__save">Save $4</span>
+            </div>
+            <div class="variant-pill" data-qty="4" data-price="140" data-compare="156" onclick="selectRepeatVariant(this)">
+              <span class="variant-pill__qty">4 Bottles</span>
+              <span class="variant-pill__price">$140</span>
+              <span class="variant-pill__save">Save $16</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subscription Toggle -->
+        <div class="sub-toggle final-cta__sub-toggle" id="repeatSubToggle">
+          <div class="sub-option active" data-type="onetime" onclick="selectRepeatSub(this)">
+            <div class="sub-radio"></div>
+            <div>
+              <div class="sub-option__label">One-time purchase</div>
+              <div class="sub-option__detail" id="repeatOnetimePrice">$74.00</div>
+            </div>
+          </div>
+          <div class="sub-option" data-type="subscribe" onclick="selectRepeatSub(this)">
+            <div class="sub-radio"></div>
+            <div>
+              <div class="sub-option__label">Subscribe &amp; Save <span class="sub-option__save">15% OFF</span></div>
+              <div class="sub-option__detail" id="repeatSubPrice">$62.90 / delivery</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ATC Button -->
+        <button class="final-cta__atc" id="repeatAtcBtn" onclick="void(0)">
+          <svg class="final-cta__atc-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          ADD TO CART — $74.00
+        </button>
+        <div class="final-cta__guarantee">60-Day Money-Back Guarantee · Free Shipping $60+</div>
+
+        <div class="final-cta__trust">
+          <div class="final-cta__trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            <strong>60-Day Guarantee</strong>
+            <span>Love it or get a full refund</span>
+          </div>
+          <div class="final-cta__trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <strong>Secure Checkout</strong>
+            <span>SSL encrypted</span>
+          </div>
+          <div class="final-cta__trust-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 22 12 16 16 16 8"/></svg>
+            <strong>Fast Shipping</strong>
+            <span>2–4 business days</span>
+          </div>
+        </div>
+
+        <div class="final-cta__social">
+          <div class="final-cta__avatars">
+            <div class="final-cta__avatar"></div>
+            <div class="final-cta__avatar" style="background:#7B5EA7;"></div>
+            <div class="final-cta__avatar" style="background:#6B4E97;"></div>
+            <div class="final-cta__avatar" style="background:#5A3D80;"></div>
+          </div>
+          <div class="final-cta__social-text">
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <strong>Trusted by 10,000+ Women Over 40</strong>
+            <em>"My skin has never looked this good!" – Sarah M.</em>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Old S11 removed — merged into Social Proof section -->
+
+<!-- FOOTER -->
+<div class="proto-footer">
+  &copy; 2026 Gloves In A Bottle. All rights reserved. · This is a design prototype.
+</div>
+
+<!-- ================================================ -->
+<!-- STICKY ATC BAR (MOBILE)                          -->
+<!-- ================================================ -->
+<div class="sticky-atc" id="stickyAtc">
+  <div>
+    <div class="sticky-atc__price" id="stickyPrice">$74.00</div>
+    <div class="sticky-atc__detail" id="stickyDetail">2 Bottles · One-time</div>
+  </div>
+  <button class="sticky-atc__btn">Add to Cart</button>
+</div>
+
+<!-- ================================================ -->
+<!-- JAVASCRIPT                                       -->
+<!-- ================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  // === STATE ===
+  let currentPrice = 74;
+  let currentCompare = 78;
+  let currentQty = 2;
+  let isSubscription = false;
+  const DISCOUNT = 0.85; // 15% off
+
+  // === PRICE HELPERS ===
+  function fmt(n) { return '$' + n.toFixed(2); }
+  function getSubPrice(p) { return +(p * DISCOUNT).toFixed(2); }
+  function getQtyLabel(q) { return q === 1 ? '1 Bottle' : q + ' Bottles'; }
+
+  function updateAllPrices() {
+    var price = isSubscription ? getSubPrice(currentPrice) : currentPrice;
+    var compare = isSubscription ? currentPrice : (currentCompare || null);
+    var label = getQtyLabel(currentQty) + ' · ' + (isSubscription ? 'Subscribe' : 'One-time');
+
+    // Hero
+    document.getElementById('displayPrice').textContent = fmt(price);
+    var dc = document.getElementById('displayCompare');
+    dc.textContent = compare ? fmt(compare) : '';
+    dc.style.display = compare ? 'inline' : 'none';
+    document.getElementById('heroAtcBtn').textContent = 'Add to Cart — ' + fmt(price);
+    document.getElementById('onetimePrice').textContent = fmt(currentPrice);
+    document.getElementById('subPrice').textContent = fmt(getSubPrice(currentPrice)) + ' · Delivered every 30, 60, or 90 days';
+
+    // Repeat CTA
+    document.getElementById('repeatAtcBtn').textContent = 'ADD TO CART — ' + fmt(price);
+    document.getElementById('repeatDisplayPrice').textContent = fmt(price);
+    var rdc = document.getElementById('repeatDisplayCompare');
+    var repeatCompare = isSubscription ? currentPrice : (currentCompare || null);
+    rdc.textContent = repeatCompare ? fmt(repeatCompare) : '';
+    rdc.style.display = repeatCompare ? 'inline' : 'none';
+    document.getElementById('repeatOnetimePrice').textContent = fmt(currentPrice);
+    document.getElementById('repeatSubPrice').textContent = fmt(getSubPrice(currentPrice)) + ' / delivery';
+
+    // Sticky
+    document.getElementById('stickyPrice').textContent = fmt(price);
+    document.getElementById('stickyDetail').textContent = label;
+  }
+
+  // === VARIANT SELECTION ===
+  window.selectVariant = function(el) {
+    currentPrice = +el.dataset.price;
+    currentCompare = el.dataset.compare ? +el.dataset.compare : 0;
+    currentQty = +el.dataset.qty;
+    // Sync both pill sets
+    syncPills('variantPills', el.dataset.qty);
+    syncPills('repeatVariantPills', el.dataset.qty);
+    updateAllPrices();
+  };
+  window.selectRepeatVariant = function(el) {
+    currentPrice = +el.dataset.price;
+    currentCompare = el.dataset.compare ? +el.dataset.compare : 0;
+    currentQty = +el.dataset.qty;
+    syncPills('variantPills', el.dataset.qty);
+    syncPills('repeatVariantPills', el.dataset.qty);
+    updateAllPrices();
+  };
+
+  function syncPills(containerId, qty) {
+    var pills = document.getElementById(containerId).querySelectorAll('.variant-pill');
+    pills.forEach(function(p) {
+      p.classList.toggle('active', p.dataset.qty === String(qty));
+    });
+  }
+
+  // === SUBSCRIPTION TOGGLE ===
+  window.selectSub = function(el) {
+    isSubscription = el.dataset.type === 'subscribe';
+    syncSub('subToggle');
+    syncSub('repeatSubToggle');
+    updateAllPrices();
+  };
+  window.selectRepeatSub = function(el) {
+    isSubscription = el.dataset.type === 'subscribe';
+    syncSub('subToggle');
+    syncSub('repeatSubToggle');
+    updateAllPrices();
+  };
+
+  function syncSub(containerId) {
+    var options = document.getElementById(containerId).querySelectorAll('.sub-option');
+    options.forEach(function(o) {
+      var match = isSubscription ? 'subscribe' : 'onetime';
+      o.classList.toggle('active', o.dataset.type === match);
+    });
+  }
+
+  // === GALLERY THUMBS ===
+  window.selectThumb = function(el) {
+    document.querySelectorAll('.hero__thumb').forEach(function(t) { t.classList.remove('active'); });
+    el.classList.add('active');
+  };
+
+  // === FAQ ACCORDION ===
+  window.toggleFaq = function(trigger) {
+    var item = trigger.parentElement;
+    var wasOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(function(fi) {
+      fi.classList.remove('open');
+      fi.querySelector('.faq-answer').style.maxHeight = '0';
+    });
+    // Open clicked if it wasn't open
+    if (!wasOpen) {
+      item.classList.add('open');
+      var answer = item.querySelector('.faq-answer');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  };
+
+  // === INGREDIENT EXPAND ===
+  window.toggleExpand = function(id) {
+    document.getElementById(id).classList.toggle('open');
+  };
+
+  // === STICKY ATC BAR ===
+  var heroBtn = document.getElementById('heroAtcBtn');
+  var stickyBar = document.getElementById('stickyAtc');
+  var repeatSection = document.getElementById('buy');
+
+  if (heroBtn && stickyBar) {
+    var observer = new IntersectionObserver(function(entries) {
+      var heroVisible = false;
+      entries.forEach(function(e) {
+        if (e.target === heroBtn) heroVisible = e.isIntersecting;
+      });
+      // Also check if repeat CTA is visible
+      var repeatRect = repeatSection ? repeatSection.getBoundingClientRect() : null;
+      var repeatVisible = repeatRect && repeatRect.top < window.innerHeight && repeatRect.bottom > 0;
+
+      if (heroVisible || repeatVisible) {
+        stickyBar.classList.remove('visible');
+      } else {
+        stickyBar.classList.add('visible');
+      }
+    }, { threshold: 0 });
+
+    observer.observe(heroBtn);
+
+    // Also watch scroll for repeat CTA visibility
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          var heroRect = heroBtn.getBoundingClientRect();
+          var heroVis = heroRect.top < window.innerHeight && heroRect.bottom > 0;
+          var repeatRect = repeatSection ? repeatSection.getBoundingClientRect() : null;
+          var repeatVis = repeatRect && repeatRect.top < window.innerHeight && repeatRect.bottom > 0;
+
+          if (heroVis || repeatVis) {
+            stickyBar.classList.remove('visible');
+          } else {
+            stickyBar.classList.add('visible');
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  // === SOCIAL PROOF TABS ===
+  window.switchSpTab = function(tab) {
+    var tabs = document.querySelectorAll('.sp-tab');
+    tabs[0].classList.toggle('active', tab === 'video');
+    tabs[0].setAttribute('aria-selected', tab === 'video');
+    tabs[1].classList.toggle('active', tab === 'written');
+    tabs[1].setAttribute('aria-selected', tab === 'written');
+    document.getElementById('spVideoTab').classList.toggle('active', tab === 'video');
+    document.getElementById('spWrittenTab').classList.toggle('active', tab === 'written');
+  };
+
+  // === SOCIAL PROOF FILTERS (Video) ===
+  window.filterReviews = function(btn, category) {
+    var container = btn.closest('.sp-tab-content');
+    container.querySelectorAll('.sp-filter').forEach(function(f) { f.classList.remove('active'); });
+    btn.classList.add('active');
+    container.querySelectorAll('.sp-video').forEach(function(v) {
+      if (category === 'all' || v.dataset.category === category) {
+        v.style.display = '';
+      } else {
+        v.style.display = 'none';
+      }
+    });
+  };
+
+  // === WRITTEN REVIEWS: Toggle sidebar on mobile ===
+  window.toggleWrittenFilters = function() {
+    var sidebar = document.getElementById('spSidebar');
+    sidebar.classList.toggle('open');
+  };
+
+  // === WRITTEN REVIEWS: Filter by star rating ===
+  window.filterByStar = function(star) {
+    var reviews = document.querySelectorAll('#writtenReviewsList .sp-written-review');
+    reviews.forEach(function(r) {
+      if (star === 'all' || r.dataset.stars === star) {
+        r.style.display = '';
+      } else {
+        r.style.display = 'none';
+      }
+    });
+  };
+
+  // === WRITTEN REVIEWS: Concern checkboxes (prototype only) ===
+  window.applyConcernFilter = function() {
+    // In prototype, just show a visual toggle — real filtering would be server-side
+  };
+
+  // === WRITTEN REVIEWS: Clear all filters ===
+  window.clearWrittenFilters = function() {
+    // Reset star radio
+    var allRadio = document.querySelector('input[name="starFilter"][value="all"]');
+    if (allRadio) allRadio.checked = true;
+    // Uncheck concern checkboxes
+    document.querySelectorAll('.sp-concern-row input[type="checkbox"]').forEach(function(cb) { cb.checked = false; });
+    // Remove active keywords
+    document.querySelectorAll('.sp-keyword').forEach(function(k) { k.classList.remove('active'); });
+    // Show all reviews
+    filterByStar('all');
+  };
+
+  // === WRITTEN REVIEWS: Keyword pill toggles ===
+  document.querySelectorAll('.sp-keyword').forEach(function(kw) {
+    kw.addEventListener('click', function() { kw.classList.toggle('active'); });
+  });
+
+  // Init first FAQ open
+  var firstFaq = document.querySelector('.faq-item.open .faq-answer');
+  if (firstFaq) firstFaq.style.maxHeight = firstFaq.scrollHeight + 'px';
+
+})();
+</script>
+</body>
+</html>
