@@ -887,9 +887,9 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 
         <!-- Price -->
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-          <span class="price-display" id="displayPrice">$59.67</span>
-          <span class="price-compare" id="displayCompare">$70.20</span>
-          <span class="savings-badge" id="savingsBadge">Save $10.53</span>
+          <span class="price-display" id="displayPrice">$70.20</span>
+          <span class="price-compare" id="displayCompare">$78.00</span>
+          <span class="savings-badge" id="savingsBadge">Save $7.80</span>
         </div>
 
         <!-- Variant Selector -->
@@ -921,19 +921,26 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 
         <!-- Subscription Toggle -->
         <div class="sub-toggle" id="subToggle">
-          <div class="sub-option active" data-type="subscribe" onclick="selectSub(this)">
+          <div class="sub-option active" data-type="onetime" onclick="selectSub(this)">
+            <div class="sub-radio"></div>
+            <div>
+              <div class="sub-option__label">One-time purchase</div>
+              <div class="sub-option__detail" id="onetimePrice">$70.20</div>
+            </div>
+          </div>
+          <div class="sub-option" data-type="subscribe" onclick="selectSub(this)">
             <div class="sub-radio"></div>
             <div>
               <div class="sub-option__label">Subscribe &amp; Save <span class="sub-option__save">15% OFF</span></div>
               <div class="sub-option__detail" id="subPrice">$59.67 / delivery</div>
             </div>
           </div>
-          <div class="sub-expanded sub-expanded--visible" id="subExpanded">
+          <div class="sub-expanded" id="subExpanded">
             <div class="sub-expanded__label">Delivery every</div>
             <select class="sub-expanded__select" id="subFrequency">
               <option value="30">1 Month (30 days) ($59.67/delivery)</option>
-              <option value="60">2 Months (60 days) ($59.67/delivery)</option>
-              <option value="90" selected>3 Months (90 days) ($59.67/delivery)</option>
+              <option value="60" selected>2 Months (60 days) ($59.67/delivery)</option>
+              <option value="90">3 Months (90 days) ($59.67/delivery)</option>
             </select>
             <ul class="sub-expanded__benefits">
               <li>Skip, reschedule, edit, or cancel deliveries anytime.</li>
@@ -941,18 +948,11 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
               <li>Save 15%</li>
             </ul>
           </div>
-          <div class="sub-option" data-type="onetime" onclick="selectSub(this)">
-            <div class="sub-radio"></div>
-            <div>
-              <div class="sub-option__label">One-time purchase</div>
-              <div class="sub-option__detail" id="onetimePrice">$70.20</div>
-            </div>
-          </div>
         </div>
 
         <!-- ATC -->
         <div>
-          <button class="btn btn--primary" id="heroAtcBtn">Add to Cart — $59.67</button>
+          <button class="btn btn--primary" id="heroAtcBtn">Add to Cart — $70.20</button>
         </div>
 
         <!-- Payment Icons -->
@@ -1295,9 +1295,9 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 
         <!-- Price Display -->
         <div class="final-cta__price-row">
-          <span class="final-cta__price" id="repeatDisplayPrice">$59.67</span>
-          <span class="final-cta__price-compare" id="repeatDisplayCompare">$70.20</span>
-          <span class="savings-badge" id="repeatSavingsBadge">Save $10.53</span>
+          <span class="final-cta__price" id="repeatDisplayPrice">$70.20</span>
+          <span class="final-cta__price-compare" id="repeatDisplayCompare">$78.00</span>
+          <span class="savings-badge" id="repeatSavingsBadge">Save $7.80</span>
         </div>
 
         <!-- Variant Pills -->
@@ -1329,19 +1329,26 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 
         <!-- Subscription Toggle -->
         <div class="sub-toggle final-cta__sub-toggle" id="repeatSubToggle">
-          <div class="sub-option active" data-type="subscribe" onclick="selectRepeatSub(this)">
+          <div class="sub-option active" data-type="onetime" onclick="selectRepeatSub(this)">
+            <div class="sub-radio"></div>
+            <div>
+              <div class="sub-option__label">One-time purchase</div>
+              <div class="sub-option__detail" id="repeatOnetimePrice">$70.20</div>
+            </div>
+          </div>
+          <div class="sub-option" data-type="subscribe" onclick="selectRepeatSub(this)">
             <div class="sub-radio"></div>
             <div>
               <div class="sub-option__label">Subscribe &amp; Save <span class="sub-option__save">15% OFF</span></div>
               <div class="sub-option__detail" id="repeatSubPrice">$59.67 / delivery</div>
             </div>
           </div>
-          <div class="sub-expanded sub-expanded--visible" id="repeatSubExpanded">
+          <div class="sub-expanded" id="repeatSubExpanded">
             <div class="sub-expanded__label">Delivery every</div>
             <select class="sub-expanded__select" id="repeatSubFrequency">
               <option value="30">1 Month (30 days) ($59.67/delivery)</option>
-              <option value="60">2 Months (60 days) ($59.67/delivery)</option>
-              <option value="90" selected>3 Months (90 days) ($59.67/delivery)</option>
+              <option value="60" selected>2 Months (60 days) ($59.67/delivery)</option>
+              <option value="90">3 Months (90 days) ($59.67/delivery)</option>
             </select>
             <ul class="sub-expanded__benefits">
               <li>Skip, reschedule, edit, or cancel deliveries anytime.</li>
@@ -1349,19 +1356,12 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
               <li>Save 15%</li>
             </ul>
           </div>
-          <div class="sub-option" data-type="onetime" onclick="selectRepeatSub(this)">
-            <div class="sub-radio"></div>
-            <div>
-              <div class="sub-option__label">One-time purchase</div>
-              <div class="sub-option__detail" id="repeatOnetimePrice">$70.20</div>
-            </div>
-          </div>
         </div>
 
         <!-- ATC Button -->
         <button class="final-cta__atc" id="repeatAtcBtn" onclick="void(0)">
           <svg class="final-cta__atc-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          ADD TO CART — $59.67
+          ADD TO CART — $70.20
         </button>
         <!-- Payment Icons -->
         <div class="payment-icons">
@@ -1623,12 +1623,12 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
       <img class="sticky-mob__thumb" src="age_lift.png" alt="">
       <div>
         <div class="sticky-mob__name">Age Lift 5+ Serum</div>
-        <div class="sticky-mob__variant" id="stickyMobDetail">2 Bottles · Subscribe</div>
+        <div class="sticky-mob__variant" id="stickyMobDetail">2 Bottles · One-time</div>
       </div>
     </div>
     <div class="sticky-mob__prices">
-      <div class="sticky-mob__price" id="stickyMobPrice">$59.67</div>
-      <div class="sticky-mob__compare" id="stickyMobCompare">$70.20</div>
+      <div class="sticky-mob__price" id="stickyMobPrice">$70.20</div>
+      <div class="sticky-mob__compare" id="stickyMobCompare">$78.00</div>
     </div>
   </div>
   <button class="sticky-mob__btn" onclick="scrollToOffer()">Choose Your Option</button>
@@ -1642,8 +1642,8 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
   </div>
   <div class="sticky-desk__stars">★★★★★<span class="sticky-desk__rating">4.9 (847)</span></div>
   <div class="sticky-desk__prices">
-    <span class="sticky-desk__price" id="stickyDeskPrice">$59.67</span>
-    <span class="sticky-desk__compare" id="stickyDeskCompare">$70.20</span>
+    <span class="sticky-desk__price" id="stickyDeskPrice">$70.20</span>
+    <span class="sticky-desk__compare" id="stickyDeskCompare">$78.00</span>
   </div>
   <button class="sticky-desk__btn" onclick="scrollToOffer()">Choose Your Option</button>
 </div>
@@ -1659,7 +1659,7 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
   let currentPrice = 70.20;
   let currentCompare = 78;
   let currentQty = 2;
-  let isSubscription = true;
+  let isSubscription = false;
   const DISCOUNT = 0.85;
 
   // === PRICE HELPERS ===
@@ -1958,10 +1958,10 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 
   // === SCROLL TO OFFER ===
   window.scrollToOffer = function() {
-    var heroInfo = document.querySelector('.hero__info');
-    if (heroInfo) {
-      var variantSection = document.querySelector('.variant-pills') || heroInfo;
-      variantSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    var target = document.getElementById('variantPills');
+    if (target) {
+      var y = target.getBoundingClientRect().top + window.pageYOffset - 20;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
