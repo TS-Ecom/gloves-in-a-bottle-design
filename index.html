@@ -145,20 +145,71 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 
 /* Gallery */
 .hero__gallery { position: relative; }
-.hero__main-img { aspect-ratio: 1 / 1; border-radius: var(--radius); width: 100%; }
-.hero__thumbs { display: flex; gap: 8px; margin-top: 12px; justify-content: center; }
-.hero__thumb {
-  width: 56px; height: 56px; border-radius: var(--radius-sm); border: 2px solid transparent;
-  cursor: pointer; transition: border-color 200ms var(--ease); flex-shrink: 0;
+.hero__main-wrap {
+  position: relative; aspect-ratio: 1 / 1; border-radius: var(--radius); width: 100%;
+  overflow: hidden; background: #F0EBF5; cursor: zoom-in; touch-action: pan-y;
 }
+.hero__main-img { width: 100%; height: 100%; object-fit: contain; border-radius: var(--radius); display: block; }
+.hero__main-video { width: 100%; height: 100%; object-fit: contain; border-radius: var(--radius); display: block; }
+.hero__media-item { display: none; width: 100%; height: 100%; }
+.hero__media-item.active { display: block; }
+.hero__video-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 56px; height: 56px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 12px rgba(0,0,0,0.15); z-index: 2; transition: transform 200ms var(--ease); }
+.hero__video-play:hover { transform: translate(-50%, -50%) scale(1.08); }
+.hero__video-play svg { width: 22px; height: 22px; color: #6A4C9C; margin-left: 2px; }
+.hero__video-play.hidden { display: none; }
+/* Gallery arrows */
+.hero__arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: rgba(255,255,255,0.85); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 3; box-shadow: 0 2px 8px rgba(0,0,0,0.12); transition: all 200ms var(--ease); }
+@media (min-width: 768px) { .hero__arrow { width: 36px; height: 36px; } }
+.hero__arrow:hover { background: #fff; box-shadow: 0 3px 12px rgba(0,0,0,0.18); }
+.hero__arrow svg { width: 18px; height: 18px; color: var(--charcoal); }
+.hero__arrow--prev { left: 12px; }
+.hero__arrow--next { right: 12px; }
+/* Dot indicators for mobile */
+.hero__dots { display: flex; justify-content: center; gap: 6px; margin-top: 10px; }
+@media (min-width: 768px) { .hero__dots { display: none; } }
+.hero__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sand); border: none; padding: 0; cursor: pointer; transition: all 200ms var(--ease); }
+.hero__dot.active { background: #7B5EA7; width: 20px; border-radius: 4px; }
+/* Thumbnails — hidden on mobile, visible on desktop */
+.hero__thumbs { display: none; gap: 8px; margin-top: 10px; justify-content: flex-start; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px; }
+@media (min-width: 768px) { .hero__thumbs { display: flex; } }
+.hero__thumbs::-webkit-scrollbar { display: none; }
+.hero__thumb {
+  width: 64px; height: 64px; border-radius: var(--radius-sm); border: 2px solid transparent;
+  cursor: pointer; transition: border-color 200ms var(--ease); flex-shrink: 0; overflow: hidden; background: #F0EBF5;
+}
+.hero__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero__thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .hero__thumb.active, .hero__thumb:hover { border-color: #7B5EA7; }
 @media (min-width: 768px) {
   .hero__gallery { position: sticky; top: 24px; }
-  .hero__thumbs { justify-content: flex-start; }
 }
+
+/* Lightbox */
+.lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; flex-direction: column; }
+.lightbox.open { display: flex; }
+.lightbox__close { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; background: rgba(255,255,255,0.15); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 3; transition: background 200ms; }
+.lightbox__close:hover { background: rgba(255,255,255,0.3); }
+.lightbox__close svg { width: 22px; height: 22px; color: #fff; }
+.lightbox__media { max-width: 90vw; max-height: 80vh; object-fit: contain; border-radius: 8px; user-select: none; }
+.lightbox__video { max-width: 90vw; max-height: 80vh; border-radius: 8px; }
+.lightbox__arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: rgba(255,255,255,0.15); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 3; transition: background 200ms; }
+.lightbox__arrow:hover { background: rgba(255,255,255,0.3); }
+.lightbox__arrow svg { width: 22px; height: 22px; color: #fff; }
+.lightbox__arrow--prev { left: 16px; }
+.lightbox__arrow--next { right: 16px; }
+.lightbox__counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 600; }
+.hero__main-wrap { cursor: zoom-in; }
 
 /* Info */
 .hero__info { display: flex; flex-direction: column; gap: var(--s-8); }
+.hero__credibility { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.hero__cred-badge { font-size: 12px; font-weight: 600; color: #7B5EA7; letter-spacing: 0.01em; }
+.hero__cred-sep { color: var(--sand); font-size: 14px; }
+.hero__tagline { font-size: 17px; line-height: 1.5; color: var(--charcoal); font-weight: 500; font-style: italic; margin: -4px 0 0; }
+.hero__quote { background: #EDE5F5; border-left: 3px solid #7B5EA7; border-radius: var(--radius-sm); padding: 12px 14px; margin: 4px 0; }
+.hero__quote-text { font-size: 13px; line-height: 1.55; color: var(--charcoal); font-style: italic; margin: 0 0 4px; }
+.hero__quote-author { font-size: 12px; color: var(--warm-grey); font-weight: 600; font-style: normal; }
+.hero__description { font-size: 13px; line-height: 1.6; color: var(--warm-grey); margin: 4px 0 0; }
 .hero__stars { display: flex; align-items: center; gap: 8px; }
 
 /* Variant Pills */
@@ -423,6 +474,67 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 .sp-load-more { text-align: center; padding-top: var(--s-8); }
 
 /* ============================================= */
+/* UPSELL BLOCK (inline in hero)                 */
+/* ============================================= */
+/* ── Upsell — Premium Horizontal Product Cards ── */
+.upsell-block { margin-top: 28px; }
+.upsell-block__header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.upsell-block__icon { width: 32px; height: 32px; border-radius: 50%; background: var(--accent-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.upsell-block__title { font-size: 16px; font-weight: 800; color: var(--deep); letter-spacing: -0.01em; }
+.upsell-cards { display: flex; flex-direction: column; gap: 14px; }
+
+/* Card container */
+.upsell-card { background: var(--white); border: 1.5px solid var(--cream-dark); border-radius: 14px; display: flex; flex-direction: row; transition: all 300ms cubic-bezier(.22,1,.36,1); position: relative; overflow: hidden; }
+.upsell-card::before { content: ''; position: absolute; inset: 0; border-radius: 14px; opacity: 0; box-shadow: 0 8px 32px rgba(123,94,167,0.15), 0 2px 8px rgba(123,94,167,0.08); transition: opacity 300ms; pointer-events: none; z-index: 1; }
+.upsell-card:hover { border-color: rgba(123,94,167,0.35); transform: translateY(-1px); }
+.upsell-card:hover::before { opacity: 1; }
+
+/* Image area */
+.upsell-card__img-wrap { position: relative; width: 44%; flex-shrink: 0; overflow: hidden; border-radius: 12px 0 0 12px; }
+.upsell-card__img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 500ms cubic-bezier(.22,1,.36,1); }
+.upsell-card:hover .upsell-card__img { transform: scale(1.05); }
+.upsell-card__badge { position: absolute; top: 10px; left: 10px; font-size: 10px; font-weight: 800; color: var(--white); background: linear-gradient(135deg, #9B7BD4 0%, #6A4C9C 100%); padding: 4px 12px; border-radius: var(--radius-full); letter-spacing: 0.04em; text-transform: uppercase; box-shadow: 0 2px 8px rgba(106,76,156,0.3); z-index: 2; }
+
+/* Body */
+.upsell-card__body { padding: 16px 18px; display: flex; flex-direction: column; flex: 1; min-width: 0; justify-content: center; gap: 0; }
+.upsell-card__name { font-size: 15px; font-weight: 800; color: var(--deep); line-height: 1.3; letter-spacing: -0.01em; }
+.upsell-card__stars { display: flex; align-items: center; gap: 4px; margin: 4px 0 6px; }
+.upsell-card__star { color: #C4993B; font-size: 12px; line-height: 1; }
+.upsell-card__rating { font-size: 11px; color: var(--warm-grey); font-weight: 500; margin-left: 2px; }
+.upsell-card__desc { font-size: 12px; color: var(--warm-grey); line-height: 1.45; margin-bottom: 10px; }
+
+/* Prices */
+.upsell-card__prices { display: flex; align-items: baseline; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.upsell-card__price { font-size: 20px; font-weight: 800; color: var(--deep); letter-spacing: -0.02em; }
+.upsell-card__compare { font-size: 14px; color: var(--warm-grey); text-decoration: line-through; font-weight: 400; }
+.upsell-card__save { font-size: 11px; font-weight: 700; color: #7B5EA7; background: var(--accent-light); padding: 2px 8px; border-radius: var(--radius-full); white-space: nowrap; }
+
+/* Variant select + Qty */
+.upsell-card__controls { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.upsell-card__variant { flex: 1; min-width: 0; height: 36px; padding: 0 30px 0 12px; border: 1.5px solid var(--cream-dark); border-radius: 8px; font-size: 12px; font-weight: 600; color: var(--deep); background: var(--cream); font-family: var(--font); cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237B5EA7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; transition: all 200ms; }
+.upsell-card__variant:hover { border-color: var(--accent); background: var(--accent-light); }
+.upsell-card__variant:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(123,94,167,0.12); }
+
+/* Add to Cart button */
+.upsell-card__btn { width: 100%; height: 40px; display: flex; align-items: center; justify-content: center; gap: 6px; background: linear-gradient(135deg, #7B5EA7 0%, #5B3D8D 100%); color: #fff; border: none; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 250ms cubic-bezier(.22,1,.36,1); text-align: center; font-family: var(--font); box-shadow: 0 4px 14px rgba(91,61,141,0.25); letter-spacing: 0.02em; position: relative; overflow: hidden; }
+.upsell-card__btn::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%); pointer-events: none; }
+.upsell-card__btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(91,61,141,0.35); }
+.upsell-card__btn:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(91,61,141,0.25); }
+.upsell-card__btn.added { background: linear-gradient(135deg, #6B9B74 0%, #4A7A52 100%); box-shadow: 0 4px 14px rgba(74,122,82,0.25); pointer-events: none; }
+
+/* Responsive */
+@media (max-width: 399px) {
+  .upsell-card__img-wrap { width: 40%; }
+  .upsell-card__body { padding: 12px 14px; }
+  .upsell-card__name { font-size: 13px; }
+  .upsell-card__price { font-size: 17px; }
+  .upsell-card__btn { height: 36px; font-size: 12px; }
+}
+@media (min-width: 768px) {
+  .upsell-card__img-wrap { width: 220px; }
+}
+
+/* ============================================= */
 /* SECTION 4: KEY INGREDIENTS                    */
 /* ============================================= */
 .ingredients-section { background: #F0EBF5; position: relative; overflow: hidden; }
@@ -613,24 +725,60 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 .final-cta__social-text em { font-style: italic; color: var(--warm-grey); font-size: 12px; }
 
 /* ============================================= */
-/* STICKY ATC BAR (MOBILE)                       */
+/* STICKY BAR — MOBILE (Full-Width Button + Thumbnail) */
 /* ============================================= */
-.sticky-atc {
-  position: fixed; bottom: 0; left: 0; right: 0; background: #FDFCFE;
-  box-shadow: 0 -4px 20px rgba(30,21,48,0.1); padding: 12px 20px;
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  z-index: 100; transform: translateY(100%); transition: transform 350ms var(--ease);
+.sticky-mob {
+  position: fixed; bottom: 0; left: 0; right: 0; background: var(--white);
+  box-shadow: 0 -4px 24px rgba(30,21,48,0.10); z-index: 100;
+  transform: translateY(100%); transition: transform 400ms cubic-bezier(.22,1,.36,1);
+  padding: 10px 16px 14px;
 }
-.sticky-atc.visible { transform: translateY(0); }
-.sticky-atc__price { font-size: 18px; font-weight: 700; color: var(--deep); }
-.sticky-atc__detail { font-size: 11px; color: var(--warm-grey); }
-.sticky-atc__btn {
-  background: #6A4C9C; color: var(--white); padding: 14px 24px; border-radius: var(--radius);
-  font-size: 14px; font-weight: 700; letter-spacing: 0.02em; white-space: nowrap;
-  transition: all 200ms var(--ease); box-shadow: 0 4px 14px rgba(106,76,156,0.4);
+.sticky-mob.visible { transform: translateY(0); }
+.sticky-mob__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.sticky-mob__product { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.sticky-mob__thumb { width: 36px; height: 36px; border-radius: 8px; object-fit: contain; background: var(--cream-dark); flex-shrink: 0; }
+.sticky-mob__name { font-size: 13px; font-weight: 700; color: var(--deep); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sticky-mob__variant { font-size: 11px; color: var(--warm-grey); }
+.sticky-mob__prices { text-align: right; flex-shrink: 0; }
+.sticky-mob__price { font-size: 18px; font-weight: 800; color: var(--deep); }
+.sticky-mob__compare { font-size: 12px; color: var(--warm-grey); text-decoration: line-through; }
+.sticky-mob__btn {
+  width: 100%; padding: 13px; border-radius: var(--radius);
+  background: linear-gradient(135deg, #7B5EA7 0%, #5B3D8D 100%); color: #fff;
+  font-size: 15px; font-weight: 700; letter-spacing: 0.02em;
+  box-shadow: 0 4px 14px rgba(91,61,141,0.3); border: none; cursor: pointer;
+  font-family: var(--font); display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: all 200ms var(--ease);
 }
-.sticky-atc__btn:hover { background: #5B3D8D; }
-@media (min-width: 1024px) { .sticky-atc { display: none !important; } }
+.sticky-mob__btn:active { transform: scale(0.98); }
+@media (min-width: 1024px) { .sticky-mob { display: none !important; } }
+
+/* STICKY BAR — DESKTOP (Dark Top Bar) */
+/* ============================================= */
+.sticky-desk {
+  position: fixed; bottom: 0; left: 0; right: 0; background: var(--deep);
+  height: 56px; z-index: 100; display: none; align-items: center; justify-content: center; gap: 32px;
+  padding: 0 24px; transform: translateY(100%); transition: transform 400ms cubic-bezier(.22,1,.36,1);
+  box-shadow: 0 -4px 24px rgba(30,21,48,0.2);
+}
+.sticky-desk.visible { transform: translateY(0); }
+.sticky-desk__product { display: flex; align-items: center; gap: 12px; }
+.sticky-desk__thumb { width: 36px; height: 36px; border-radius: 8px; object-fit: contain; background: #2E2640; flex-shrink: 0; }
+.sticky-desk__name { font-size: 14px; font-weight: 700; color: #fff; white-space: nowrap; }
+.sticky-desk__stars { display: flex; align-items: center; gap: 2px; font-size: 12px; color: var(--gold); white-space: nowrap; }
+.sticky-desk__rating { font-size: 12px; color: rgba(255,255,255,0.5); margin-left: 4px; }
+.sticky-desk__prices { display: flex; align-items: baseline; gap: 6px; }
+.sticky-desk__price { font-size: 18px; font-weight: 800; color: #fff; }
+.sticky-desk__compare { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: line-through; }
+.sticky-desk__btn {
+  background: #7B5EA7; color: #fff; padding: 10px 28px; border-radius: var(--radius);
+  font-size: 13px; font-weight: 700; letter-spacing: 0.02em; border: none; cursor: pointer;
+  font-family: var(--font); box-shadow: 0 2px 10px rgba(123,94,167,0.4);
+  transition: all 200ms var(--ease); white-space: nowrap;
+}
+.sticky-desk__btn:hover { background: #6A4C9C; }
+@media (max-width: 1023px) { .sticky-desk { display: none !important; } }
+@media (min-width: 1024px) { .sticky-desk { display: flex; } }
 
 /* ---- FOOTER ---- */
 .proto-footer {
@@ -661,27 +809,81 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 
       <!-- LEFT: Gallery -->
       <div class="hero__gallery">
-        <div class="hero__main-img img-ph" style="border-radius:var(--radius);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-          Product bottle — front view<br>Hero shot on cream backdrop
+        <div class="hero__main-wrap" id="heroMainWrap">
+          <button class="hero__arrow hero__arrow--prev" onclick="galleryPrev()" aria-label="Previous image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="hero__arrow hero__arrow--next" onclick="galleryNext()" aria-label="Next image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+          </button>
+          <!-- 0: Product hero (1 bottle) -->
+          <div class="hero__media-item" data-index="0">
+            <img class="hero__main-img" src="age_lift.png" alt="Age Lift 5+ Serum — bottle and box">
+          </div>
+          <!-- 1: 2-pack -->
+          <div class="hero__media-item active" data-index="1">
+            <img class="hero__main-img" src="2pack_serum.png" alt="Age Lift 5+ Serum — 2 pack">
+          </div>
+          <!-- 2: 4-pack -->
+          <div class="hero__media-item" data-index="2">
+            <img class="hero__main-img" src="4pack_serum.png" alt="Age Lift 5+ Serum — 4 pack">
+          </div>
+          <!-- 3: Lifestyle — in use -->
+          <div class="hero__media-item" data-index="3">
+            <img class="hero__main-img" src="serum6.png" alt="Serum application — fresh absorption">
+          </div>
+          <!-- 4: Product info -->
+          <div class="hero__media-item" data-index="4">
+            <img class="hero__main-img" src="serum1.png" alt="Elasticity and blemish care">
+          </div>
+          <!-- 5: Ingredients -->
+          <div class="hero__media-item" data-index="5">
+            <img class="hero__main-img" src="serum9.png" alt="Key ingredients and benefits">
+          </div>
+          <!-- 6: How to use -->
+          <div class="hero__media-item" data-index="6">
+            <img class="hero__main-img" src="serum7.png" alt="How to use — 3 steps">
+          </div>
+          <!-- 7: Video -->
+          <div class="hero__media-item" data-index="7">
+            <video class="hero__main-video" id="heroVideo" src="video_serum.mp4" playsinline preload="metadata" poster="age_lift.png"></video>
+            <div class="hero__video-play" id="heroVideoPlay" onclick="toggleHeroVideo()">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="6,3 20,12 6,21"/></svg>
+            </div>
+          </div>
         </div>
         <div class="hero__thumbs">
-          <div class="hero__thumb img-ph active" style="font-size:10px;" onclick="selectThumb(this)">Front</div>
-          <div class="hero__thumb img-ph" style="font-size:10px;" onclick="selectThumb(this)">Side</div>
-          <div class="hero__thumb img-ph" style="font-size:10px;" onclick="selectThumb(this)">Texture</div>
-          <div class="hero__thumb img-ph" style="font-size:10px;" onclick="selectThumb(this)">In Use</div>
-          <div class="hero__thumb img-ph" style="font-size:10px;" onclick="selectThumb(this)">Scale</div>
+          <div class="hero__thumb" data-gallery="0" onclick="selectGallery(0)"><img src="age_lift.png" alt="1 bottle"></div>
+          <div class="hero__thumb active" data-gallery="1" onclick="selectGallery(1)"><img src="2pack_serum.png" alt="2 pack"></div>
+          <div class="hero__thumb" data-gallery="2" onclick="selectGallery(2)"><img src="4pack_serum.png" alt="4 pack"></div>
+          <div class="hero__thumb" data-gallery="3" onclick="selectGallery(3)"><img src="serum6.png" alt="In use"></div>
+          <div class="hero__thumb" data-gallery="4" onclick="selectGallery(4)"><img src="serum1.png" alt="Info"></div>
+          <div class="hero__thumb" data-gallery="5" onclick="selectGallery(5)"><img src="serum9.png" alt="Ingredients"></div>
+          <div class="hero__thumb" data-gallery="6" onclick="selectGallery(6)"><img src="serum7.png" alt="How to use"></div>
+          <div class="hero__thumb" data-gallery="7" onclick="selectGallery(7)"><video src="video_serum.mp4" muted preload="metadata"></video></div>
+        </div>
+        <div class="hero__dots" id="heroDots">
+          <button class="hero__dot" data-dot="0" onclick="selectGallery(0)"></button>
+          <button class="hero__dot active" data-dot="1" onclick="selectGallery(1)"></button>
+          <button class="hero__dot" data-dot="2" onclick="selectGallery(2)"></button>
+          <button class="hero__dot" data-dot="3" onclick="selectGallery(3)"></button>
+          <button class="hero__dot" data-dot="4" onclick="selectGallery(4)"></button>
+          <button class="hero__dot" data-dot="5" onclick="selectGallery(5)"></button>
+          <button class="hero__dot" data-dot="6" onclick="selectGallery(6)"></button>
+          <button class="hero__dot" data-dot="7" onclick="selectGallery(7)"></button>
         </div>
       </div>
 
       <!-- RIGHT: Info -->
       <div class="hero__info">
         <h1>Age Lift 5+ Lifting Serum</h1>
+        <p class="hero__tagline">Your skin changed after 40. This serum was built for exactly that.</p>
         <div class="hero__stars">
           <span class="stars__icons">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <a href="#reviews" class="stars__count">127 Reviews</a>
         </div>
-        <p class="body">Targets the 5 visible signs of menopause-related skin aging with clinically-backed actives that work with your changing skin — not against it.</p>
+
+        <p class="hero__description">Targets the 5 visible signs of menopause-related skin aging with clinically-backed actives that work with your changing skin — not against it.</p>
 
         <!-- Price -->
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
@@ -784,10 +986,9 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
               <span class="post-atc-badge__text">Dermatologist<br>Tested</span>
             </div>
           </div>
-          <div class="post-atc-trust__card">
-            <div class="post-atc-trust__card-title">30-Day Money-Back Guarantee</div>
-            <div class="post-atc-trust__card-text">That's how confident we are in your results. But if you're not thrilled, send it back and we'll refund your purchase.</div>
-            <a class="post-atc-trust__card-link" href="#">Learn More</a>
+          <div class="post-atc-trust__card" style="padding:10px 14px; display:flex; align-items:center; gap:8px;">
+            <svg style="width:18px;height:18px;flex-shrink:0;color:#5A7A62;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            <span style="font-size:12px;font-weight:600;color:var(--charcoal);">30-Day Money-Back Guarantee — love it or send it back for a full refund.</span>
           </div>
         </div>
 
@@ -847,6 +1048,76 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
                 For external use only. Avoid contact with eyes.
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Upsell Block -->
+        <div class="upsell-block">
+          <div class="upsell-block__header">
+            <span class="upsell-block__title">Customers Also Bought</span>
+          </div>
+          <div class="upsell-cards">
+
+            <!-- Card 1: Skin Clear+ Serum -->
+            <div class="upsell-card" data-variants='[{"label":"1 Bottle","price":33.15,"compare":39},{"label":"2 Bottles","price":59.50,"compare":78},{"label":"4 Bottles","price":109.20,"compare":156}]'>
+              <div class="upsell-card__img-wrap">
+                <img class="upsell-card__img" src="serum.webp" alt="Skin Clear+ Serum">
+                <span class="upsell-card__badge">Save 15%</span>
+              </div>
+              <div class="upsell-card__body">
+                <div class="upsell-card__name">Skin Clear+ Serum</div>
+                <div class="upsell-card__stars">
+                  <span class="upsell-card__star">&#9733;</span><span class="upsell-card__star">&#9733;</span><span class="upsell-card__star">&#9733;</span><span class="upsell-card__star">&#9733;</span><span class="upsell-card__star">&#9733;</span>
+                  <span class="upsell-card__rating">4.8 (124)</span>
+                </div>
+                <div class="upsell-card__desc">Brightening &amp; blemish care serum with botanical extracts</div>
+                <div class="upsell-card__prices">
+                  <span class="upsell-card__price">$33.15</span>
+                  <span class="upsell-card__compare">$39.00</span>
+                  <span class="upsell-card__save">-15%</span>
+                </div>
+                <div class="upsell-card__controls">
+                  <select class="upsell-card__variant" onchange="upsellVariant(this)">
+                    <option value="0">1 Bottle</option>
+                    <option value="1">2 Bottles</option>
+                    <option value="2">4 Bottles</option>
+                  </select>
+
+                </div>
+                <button class="upsell-card__btn" onclick="upsellAdd(this)">Add to Cart</button>
+              </div>
+            </div>
+
+            <!-- Card 2: Hydrating Face Toner -->
+            <div class="upsell-card" data-variants='[{"label":"1 Bottle","price":33.15,"compare":39},{"label":"2 Bottles","price":59.50,"compare":78},{"label":"4 Bottles","price":109.20,"compare":156}]'>
+              <div class="upsell-card__img-wrap">
+                <img class="upsell-card__img" src="toner_1bottle.webp" alt="Hydrating Face Toner">
+                <span class="upsell-card__badge">Save 15%</span>
+              </div>
+              <div class="upsell-card__body">
+                <div class="upsell-card__name">Hydrating Face Toner</div>
+                <div class="upsell-card__stars">
+                  <span class="upsell-card__star">&#9733;</span><span class="upsell-card__star">&#9733;</span><span class="upsell-card__star">&#9733;</span><span class="upsell-card__star">&#9733;</span><span class="upsell-card__star">&#9733;</span>
+                  <span class="upsell-card__rating">4.9 (312)</span>
+                </div>
+                <div class="upsell-card__desc">Hyaluronic acid &amp; peptide hydration with rose water</div>
+                <div class="upsell-card__prices">
+                  <span class="upsell-card__price">$33.15</span>
+                  <span class="upsell-card__compare">$39.00</span>
+                  <span class="upsell-card__save">-15%</span>
+                </div>
+                <div class="upsell-card__controls">
+                  <select class="upsell-card__variant" onchange="upsellVariant(this)">
+                    <option value="0">1 Bottle</option>
+                    <option value="1">2 Bottles</option>
+                    <option value="2">4 Bottles</option>
+                  </select>
+
+                </div>
+                <button class="upsell-card__btn" onclick="upsellAdd(this)">Add to Cart</button>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -1121,10 +1392,9 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
               <span class="post-atc-badge__text">Dermatologist<br>Tested</span>
             </div>
           </div>
-          <div class="post-atc-trust__card">
-            <div class="post-atc-trust__card-title">30-Day Money-Back Guarantee</div>
-            <div class="post-atc-trust__card-text">That's how confident we are in your results. But if you're not thrilled, send it back and we'll refund your purchase.</div>
-            <a class="post-atc-trust__card-link" href="#">Learn More</a>
+          <div class="post-atc-trust__card" style="padding:10px 14px; display:flex; align-items:center; gap:8px;">
+            <svg style="width:18px;height:18px;flex-shrink:0;color:#5A7A62;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            <span style="font-size:12px;font-weight:600;color:var(--charcoal);">30-Day Money-Back Guarantee — love it or send it back for a full refund.</span>
           </div>
         </div>
 
@@ -1346,13 +1616,36 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
   &copy; 2026 Gloves In A Bottle. All rights reserved. · This is a design prototype.
 </div>
 
-<!-- STICKY ATC BAR (MOBILE) -->
-<div class="sticky-atc" id="stickyAtc">
-  <div>
-    <div class="sticky-atc__price" id="stickyPrice">$59.67</div>
-    <div class="sticky-atc__detail" id="stickyDetail">2 Bottles · Subscribe</div>
+<!-- STICKY BAR — MOBILE -->
+<div class="sticky-mob" id="stickyMob">
+  <div class="sticky-mob__top">
+    <div class="sticky-mob__product">
+      <img class="sticky-mob__thumb" src="age_lift.png" alt="">
+      <div>
+        <div class="sticky-mob__name">Age Lift 5+ Serum</div>
+        <div class="sticky-mob__variant" id="stickyMobDetail">2 Bottles · Subscribe</div>
+      </div>
+    </div>
+    <div class="sticky-mob__prices">
+      <div class="sticky-mob__price" id="stickyMobPrice">$59.67</div>
+      <div class="sticky-mob__compare" id="stickyMobCompare">$70.20</div>
+    </div>
   </div>
-  <button class="sticky-atc__btn">Add to Cart</button>
+  <button class="sticky-mob__btn" onclick="scrollToOffer()">Choose Your Option</button>
+</div>
+
+<!-- STICKY BAR — DESKTOP -->
+<div class="sticky-desk" id="stickyDesk">
+  <div class="sticky-desk__product">
+    <img class="sticky-desk__thumb" src="age_lift.png" alt="">
+    <span class="sticky-desk__name">Age Lift 5+ Lifting Serum</span>
+  </div>
+  <div class="sticky-desk__stars">★★★★★<span class="sticky-desk__rating">4.9 (847)</span></div>
+  <div class="sticky-desk__prices">
+    <span class="sticky-desk__price" id="stickyDeskPrice">$59.67</span>
+    <span class="sticky-desk__compare" id="stickyDeskCompare">$70.20</span>
+  </div>
+  <button class="sticky-desk__btn" onclick="scrollToOffer()">Choose Your Option</button>
 </div>
 
 <!-- ================================================ -->
@@ -1420,9 +1713,17 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
       sel.options[2].text = '3 Months (90 days) (' + perDelivery + '/delivery)';
     });
 
-    // Sticky
-    document.getElementById('stickyPrice').textContent = fmt(price);
-    document.getElementById('stickyDetail').textContent = label;
+    // Sticky bars — mobile + desktop
+    var smp = document.getElementById('stickyMobPrice');
+    var smc = document.getElementById('stickyMobCompare');
+    var smd = document.getElementById('stickyMobDetail');
+    var sdp = document.getElementById('stickyDeskPrice');
+    var sdc = document.getElementById('stickyDeskCompare');
+    if (smp) smp.textContent = fmt(price);
+    if (smc) smc.textContent = fmt(compare);
+    if (smd) smd.textContent = label;
+    if (sdp) sdp.textContent = fmt(price);
+    if (sdc) sdc.textContent = fmt(compare);
   }
 
   // === VARIANT SELECTION ===
@@ -1433,6 +1734,9 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
     syncPills('variantPills', el.dataset.qty);
     syncPills('repeatVariantPills', el.dataset.qty);
     updateAllPrices();
+    // Switch gallery to matching variant image
+    var gi = variantImageMap[currentQty];
+    if (gi !== undefined) selectGallery(gi);
   };
   window.selectRepeatVariant = function(el) {
     currentPrice = +el.dataset.price;
@@ -1441,6 +1745,9 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
     syncPills('variantPills', el.dataset.qty);
     syncPills('repeatVariantPills', el.dataset.qty);
     updateAllPrices();
+    // Switch gallery to matching variant image
+    var gi = variantImageMap[currentQty];
+    if (gi !== undefined) selectGallery(gi);
   };
 
   function syncPills(containerId, qty) {
@@ -1497,10 +1804,120 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
     if (!wasOpen) item.classList.add('open');
   };
 
-  // === GALLERY THUMBS ===
-  window.selectThumb = function(el) {
+  // === GALLERY ===
+  window.currentGalleryIndex = 1;
+  var variantImageMap = { 1: 0, 2: 1, 4: 2 }; // qty → gallery index
+
+  window.selectGallery = function(index) {
+    // pause video if leaving video slide
+    var heroVid = document.getElementById('heroVideo');
+    var playBtn = document.getElementById('heroVideoPlay');
+    if (currentGalleryIndex === 7 && index !== 7 && heroVid) {
+      heroVid.pause();
+      if (playBtn) playBtn.classList.remove('hidden');
+    }
+    window.currentGalleryIndex = index;
+    // update main media
+    document.querySelectorAll('.hero__media-item').forEach(function(m) { m.classList.remove('active'); });
+    var target = document.querySelector('.hero__media-item[data-index="' + index + '"]');
+    if (target) target.classList.add('active');
+    // update thumbs
     document.querySelectorAll('.hero__thumb').forEach(function(t) { t.classList.remove('active'); });
-    el.classList.add('active');
+    var thumb = document.querySelector('.hero__thumb[data-gallery="' + index + '"]');
+    if (thumb) thumb.classList.add('active');
+    // update dots
+    document.querySelectorAll('.hero__dot').forEach(function(d) { d.classList.remove('active'); });
+    var dot = document.querySelector('.hero__dot[data-dot="' + index + '"]');
+    if (dot) dot.classList.add('active');
+  };
+
+  window.toggleHeroVideo = function() {
+    var vid = document.getElementById('heroVideo');
+    var btn = document.getElementById('heroVideoPlay');
+    if (!vid) return;
+    if (vid.paused) {
+      vid.play();
+      if (btn) btn.classList.add('hidden');
+    } else {
+      vid.pause();
+      if (btn) btn.classList.remove('hidden');
+    }
+  };
+
+  // When video ends, show play button again
+  (function() {
+    var vid = document.getElementById('heroVideo');
+    if (vid) {
+      vid.addEventListener('ended', function() {
+        var btn = document.getElementById('heroVideoPlay');
+        if (btn) btn.classList.remove('hidden');
+      });
+    }
+  })();
+
+  // Gallery arrows
+  var totalGallerySlides = document.querySelectorAll('.hero__media-item').length;
+  window.galleryPrev = function() {
+    var idx = (currentGalleryIndex - 1 + totalGallerySlides) % totalGallerySlides;
+    selectGallery(idx);
+  };
+  window.galleryNext = function() {
+    var idx = (currentGalleryIndex + 1) % totalGallerySlides;
+    selectGallery(idx);
+  };
+
+  // Swipe support for mobile gallery
+  (function() {
+    var wrap = document.getElementById('heroMainWrap');
+    var startX = 0, startY = 0, diffX = 0, isSwipe = false;
+    wrap.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      diffX = 0; isSwipe = false;
+    }, { passive: true });
+    wrap.addEventListener('touchmove', function(e) {
+      diffX = e.touches[0].clientX - startX;
+      var diffY = e.touches[0].clientY - startY;
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 10) isSwipe = true;
+    }, { passive: true });
+    wrap.addEventListener('touchend', function() {
+      if (isSwipe && Math.abs(diffX) > 40) {
+        if (diffX < 0) galleryNext();
+        else galleryPrev();
+      }
+    });
+  })();
+
+  // === UPSELL VARIANT + QTY + ADD TO CART ===
+  function getUpsellVariants(card) {
+    try { return JSON.parse(card.dataset.variants); } catch(e) { return []; }
+  }
+  function updateUpsellPrice(card) {
+    var variants = getUpsellVariants(card);
+    var select = card.querySelector('.upsell-card__variant');
+    var qtyInput = card.querySelector('.upsell-card__qty-input');
+    var idx = parseInt(select.value) || 0;
+    var qty = Math.max(1, parseInt(qtyInput.value) || 1);
+    var v = variants[idx] || variants[0];
+    var priceEl = card.querySelector('.upsell-card__price');
+    var compareEl = card.querySelector('.upsell-card__compare');
+    priceEl.textContent = '$' + (v.price * qty).toFixed(2);
+    compareEl.textContent = '$' + (v.compare * qty).toFixed(2);
+  }
+  window.upsellVariant = function(select) {
+    var card = select.closest('.upsell-card');
+    updateUpsellPrice(card);
+  };
+  window.upsellRecalc = function(input) {
+    var val = Math.max(1, Math.min(10, parseInt(input.value) || 1));
+    input.value = val;
+    var card = input.closest('.upsell-card');
+    updateUpsellPrice(card);
+  };
+  window.upsellAdd = function(btn) {
+    btn.classList.add('added');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px;"><polyline points="20 6 9 17 4 12"/></svg>Added';
+    setTimeout(function() { btn.classList.remove('added'); btn.innerHTML = 'Add to Cart'; }, 2500);
   };
 
   // === INGREDIENT EXPAND ===
@@ -1539,12 +1956,22 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
     });
   };
 
-  // === STICKY ATC BAR ===
+  // === SCROLL TO OFFER ===
+  window.scrollToOffer = function() {
+    var heroInfo = document.querySelector('.hero__info');
+    if (heroInfo) {
+      var variantSection = document.querySelector('.variant-pills') || heroInfo;
+      variantSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
+  // === STICKY BARS (MOBILE + DESKTOP) ===
   var heroBtn = document.getElementById('heroAtcBtn');
-  var stickyBar = document.getElementById('stickyAtc');
+  var stickyMob = document.getElementById('stickyMob');
+  var stickyDesk = document.getElementById('stickyDesk');
   var repeatSection = document.getElementById('buy');
 
-  if (heroBtn && stickyBar) {
+  if (heroBtn) {
     var ticking = false;
     window.addEventListener('scroll', function() {
       if (!ticking) {
@@ -1553,17 +1980,102 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
           var heroVis = heroRect.top < window.innerHeight && heroRect.bottom > 0;
           var repeatRect = repeatSection ? repeatSection.getBoundingClientRect() : null;
           var repeatVis = repeatRect && repeatRect.top < window.innerHeight && repeatRect.bottom > 0;
-          if (heroVis || repeatVis) {
-            stickyBar.classList.remove('visible');
-          } else {
-            stickyBar.classList.add('visible');
-          }
+          var show = !(heroVis || repeatVis);
+          if (stickyMob) stickyMob.classList.toggle('visible', show);
+          if (stickyDesk) stickyDesk.classList.toggle('visible', show);
           ticking = false;
         });
         ticking = true;
       }
     });
   }
+})();
+</script>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox__close" onclick="closeLightbox(event, true)" aria-label="Close">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="lightbox__arrow lightbox__arrow--prev" onclick="lightboxPrev(event)" aria-label="Previous">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="lightbox__arrow lightbox__arrow--next" onclick="lightboxNext(event)" aria-label="Next">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+  </button>
+  <div id="lightboxContent"></div>
+  <div class="lightbox__counter" id="lightboxCounter"></div>
+</div>
+
+<script>
+(function() {
+  var lb = document.getElementById('lightbox');
+  var lbContent = document.getElementById('lightboxContent');
+  var lbCounter = document.getElementById('lightboxCounter');
+  var lbIndex = 0;
+
+  // Media sources for lightbox
+  var galleryMedia = [
+    { type: 'img', src: 'age_lift.png' },
+    { type: 'img', src: '2pack_serum.png' },
+    { type: 'img', src: '4pack_serum.png' },
+    { type: 'img', src: 'serum6.png' },
+    { type: 'img', src: 'serum1.png' },
+    { type: 'img', src: 'serum9.png' },
+    { type: 'img', src: 'serum7.png' },
+    { type: 'video', src: 'video_serum.mp4' }
+  ];
+
+  function renderLightbox() {
+    var item = galleryMedia[lbIndex];
+    if (item.type === 'video') {
+      lbContent.innerHTML = '<video class="lightbox__video" src="' + item.src + '" controls autoplay playsinline></video>';
+    } else {
+      lbContent.innerHTML = '<img class="lightbox__media" src="' + item.src + '" alt="">';
+    }
+    lbCounter.textContent = (lbIndex + 1) + ' / ' + galleryMedia.length;
+  }
+
+  // Open lightbox from main gallery image click
+  var mainWrap = document.getElementById('heroMainWrap');
+  mainWrap.addEventListener('click', function(e) {
+    // Don't open lightbox when clicking arrows or video play button
+    if (e.target.closest('.hero__arrow') || e.target.closest('.hero__video-play')) return;
+    lbIndex = currentGalleryIndex;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    renderLightbox();
+  });
+
+  window.closeLightbox = function(e, force) {
+    if (force || e.target === lb) {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+      // Pause any lightbox video
+      var vid = lbContent.querySelector('video');
+      if (vid) vid.pause();
+    }
+  };
+
+  window.lightboxPrev = function(e) {
+    e.stopPropagation();
+    lbIndex = (lbIndex - 1 + galleryMedia.length) % galleryMedia.length;
+    renderLightbox();
+  };
+
+  window.lightboxNext = function(e) {
+    e.stopPropagation();
+    lbIndex = (lbIndex + 1) % galleryMedia.length;
+    renderLightbox();
+  };
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') { lb.classList.remove('open'); document.body.style.overflow = ''; }
+    if (e.key === 'ArrowLeft') lightboxPrev(e);
+    if (e.key === 'ArrowRight') lightboxNext(e);
+  });
 })();
 </script>
 </body>
