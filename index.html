@@ -205,12 +205,24 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 .hero__credibility { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .hero__cred-badge { font-size: 12px; font-weight: 600; color: #7B5EA7; letter-spacing: 0.01em; }
 .hero__cred-sep { color: var(--sand); font-size: 14px; }
-.hero__tagline { font-size: 17px; line-height: 1.5; color: var(--charcoal); font-weight: 500; font-style: italic; margin: -4px 0 0; }
+.hero__tagline { font-size: 18px; line-height: 1.5; color: var(--charcoal); font-weight: 500; font-style: normal; margin: -4px 0 0; }
 .hero__quote { background: #EDE5F5; border-left: 3px solid #7B5EA7; border-radius: var(--radius-sm); padding: 12px 14px; margin: 4px 0; }
 .hero__quote-text { font-size: 13px; line-height: 1.55; color: var(--charcoal); font-style: italic; margin: 0 0 4px; }
 .hero__quote-author { font-size: 12px; color: var(--warm-grey); font-weight: 600; font-style: normal; }
 .hero__description { font-size: 13px; line-height: 1.6; color: var(--warm-grey); margin: 4px 0 0; }
+.hero__benefits { display: flex; flex-direction: column; gap: 8px; margin: 6px 0 0; }
+.hero__benefit { font-size: 14px; line-height: 1.55; color: var(--charcoal); display: flex; align-items: flex-start; gap: 8px; }
+.hero__benefit svg { flex-shrink: 0; width: 16px; height: 16px; margin-top: 2px; }
 .hero__stars { display: flex; align-items: center; gap: 8px; }
+
+/* Mini Review Card */
+.mini-review { display: flex; align-items: stretch; background: var(--accent-light); border-radius: 12px; overflow: hidden; margin: 8px 0 0; }
+.mini-review__photo { width: 72px; height: 72px; object-fit: cover; border-radius: 50%; flex-shrink: 0; margin: 10px 0 10px 10px; }
+.mini-review__body { display: flex; flex-direction: column; justify-content: center; padding: 10px 14px; gap: 2px; min-width: 0; }
+.mini-review__name { font-size: 13px; font-weight: 700; color: var(--charcoal); }
+.mini-review__stars { font-size: 12px; color: #C4993B; letter-spacing: 1px; line-height: 1; display: flex; align-items: center; gap: 6px; }
+.mini-review__verified { font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0; }
+.mini-review__text { font-size: 13px; line-height: 1.45; color: var(--charcoal); font-style: normal; }
 
 /* Variant Pills */
 .variants { display: flex; flex-direction: column; gap: 10px; }
@@ -877,13 +889,25 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
       <!-- RIGHT: Info -->
       <div class="hero__info">
         <h1>Age Lift 5+ Lifting Serum</h1>
-        <p class="hero__tagline">Your skin changed after 40. This serum was built for exactly that.</p>
         <div class="hero__stars">
           <span class="stars__icons">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <a href="#reviews" class="stars__count">127 Reviews</a>
         </div>
-
-        <p class="hero__description">Targets the 5 visible signs of menopause-related skin aging with clinically-backed actives that work with your changing skin — not against it.</p>
+        <p class="hero__tagline">You've tried everything. Your skin still feels dry, tight, reactive.<br>It's not the products — it's your changing hormones.<br>Age Lift 5+ works with that change.</p>
+        <div class="hero__benefits">
+          <div class="hero__benefit"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#7B5EA7"/><path d="M4.5 8.2L7 10.5L11.5 5.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Rebuilds the moisture barrier lost during menopause</div>
+          <div class="hero__benefit"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#7B5EA7"/><path d="M4.5 8.2L7 10.5L11.5 5.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Calms reactive, sensitive skin</div>
+          <div class="hero__benefit"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#7B5EA7"/><path d="M4.5 8.2L7 10.5L11.5 5.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Visibly firms and lifts in 4 weeks</div>
+          <div class="hero__benefit"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#7B5EA7"/><path d="M4.5 8.2L7 10.5L11.5 5.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Dermatologist tested for menopausal skin</div>
+        </div>
+        <div class="mini-review">
+          <img class="mini-review__photo" src="linda-review.png" alt="Linda, 53">
+          <div class="mini-review__body">
+            <div class="mini-review__name">Linda, 53</div>
+            <div class="mini-review__stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span class="mini-review__verified">Verified Purchase</span></div>
+            <div class="mini-review__text">"For the first time in years, my skin feels like mine again."</div>
+          </div>
+        </div>
 
         <!-- Price -->
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
@@ -899,6 +923,7 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
             <div class="variant-pill" data-qty="1" data-price="39" data-compare="" onclick="selectVariant(this)">
               <span class="variant-pill__qty">1 Bottle</span>
               <span class="variant-pill__price">$39</span>
+              <span class="variant-pill__each" style="font-size:10px;color:var(--warm-grey);">~30-day supply</span>
             </div>
             <div class="variant-pill active" data-qty="2" data-price="70.20" data-compare="78" onclick="selectVariant(this)">
               <span class="variant-pill__badge variant-pill__badge--popular">Most Popular</span>
@@ -932,7 +957,7 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
             <div class="sub-radio"></div>
             <div>
               <div class="sub-option__label">Subscribe &amp; Save <span class="sub-option__save">15% OFF</span></div>
-              <div class="sub-option__detail" id="subPrice">$59.67 / delivery</div>
+              <div class="sub-option__detail" id="subPrice">$59.67/month · Save 15% + free shipping</div>
             </div>
           </div>
           <div class="sub-expanded" id="subExpanded">
@@ -1307,6 +1332,7 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
             <div class="variant-pill" data-qty="1" data-price="39" data-compare="" onclick="selectRepeatVariant(this)">
               <span class="variant-pill__qty">1 Bottle</span>
               <span class="variant-pill__price">$39</span>
+              <span class="variant-pill__each" style="font-size:10px;color:var(--warm-grey);">~30-day supply</span>
             </div>
             <div class="variant-pill active" data-qty="2" data-price="70.20" data-compare="78" onclick="selectRepeatVariant(this)">
               <span class="variant-pill__badge variant-pill__badge--popular">Most Popular</span>
@@ -1340,7 +1366,7 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
             <div class="sub-radio"></div>
             <div>
               <div class="sub-option__label">Subscribe &amp; Save <span class="sub-option__save">15% OFF</span></div>
-              <div class="sub-option__detail" id="repeatSubPrice">$59.67 / delivery</div>
+              <div class="sub-option__detail" id="repeatSubPrice">$59.67/month · Save 15% + free shipping</div>
             </div>
           </div>
           <div class="sub-expanded" id="repeatSubExpanded">
