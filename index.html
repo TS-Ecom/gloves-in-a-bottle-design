@@ -294,29 +294,19 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 .payment-icons { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 8px; justify-content: center; }
 .payment-icons svg { height: 24px; width: auto; opacity: 1; }
 
-.post-atc-trust { display: flex; flex-direction: column; gap: 10px; margin-top: 0; }
-.post-atc-trust__badges {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 4px 0;
+.post-atc-trust { margin-top: 4px; }
+.post-atc-trust__inline {
+  display: flex; align-items: center; justify-content: center; gap: 16px; padding: 8px 0;
 }
-.post-atc-badge {
-  display: flex; align-items: center; gap: 10px; padding: 10px 12px;
-  background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+.post-atc-inline-badge {
+  display: flex; flex-direction: row; align-items: center; gap: 6px;
 }
-.post-atc-badge__icon { width: 28px; height: 28px; flex-shrink: 0; color: #7B5EA7; }
-.post-atc-badge__text { font-size: 11px; font-weight: 600; color: var(--charcoal); line-height: 1.3; }
-.post-atc-trust__card {
-  background: var(--white); border-radius: var(--radius); padding: 20px 22px;
-  box-shadow: 0 2px 12px rgba(46,26,71,0.08); border: 1px solid rgba(123,94,167,0.12);
-}
-.post-atc-trust__card-title {
-  font-size: 18px; font-weight: 800; color: var(--deep); margin-bottom: 8px; line-height: 1.25;
-}
-.post-atc-trust__card-text {
-  font-size: 14px; color: var(--charcoal); line-height: 1.55; margin-bottom: 12px;
-}
-.post-atc-trust__card-link {
-  font-size: 13px; font-weight: 700; color: var(--deep); text-decoration: underline;
-  text-underline-offset: 3px; cursor: pointer;
+.post-atc-inline-badge__icon { width: 22px; height: 22px; flex-shrink: 0; }
+.post-atc-inline-badge__text { font-size: 11px; font-weight: 600; color: var(--charcoal); line-height: 1.2; white-space: nowrap; }
+@media (max-width: 420px) {
+  .post-atc-trust__inline { gap: 8px; }
+  .post-atc-inline-badge__icon { width: 18px; height: 18px; }
+  .post-atc-inline-badge__text { font-size: 10px; }
 }
 
 /* FAQ Accordion */
@@ -351,9 +341,9 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 .social-proof { background: var(--cream); }
 .sp-header { text-align: center; margin-bottom: var(--s-8); }
 .sp-header .eyebrow { margin-bottom: var(--s-4); }
-.sp-rating { display: flex; align-items: center; justify-content: center; gap: 6px 8px; margin-top: 8px; flex-wrap: wrap; }
-.sp-rating__stars { color: var(--gold); font-size: 22px; letter-spacing: 2px; flex-shrink: 0; }
-.sp-rating__text { font-size: 14px; color: var(--warm-grey); white-space: nowrap; }
+.sp-rating { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 8px; flex-wrap: nowrap; }
+.sp-rating__stars { color: var(--gold); font-size: 15px; letter-spacing: 1px; flex-shrink: 0; line-height: 1; }
+.sp-rating__text { font-size: 12px; color: var(--warm-grey); white-space: nowrap; }
 
 /* Tabs */
 .sp-tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: var(--s-12); }
@@ -558,39 +548,44 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 .ingr-grid {
   display: grid; grid-template-columns: 1fr; gap: 16px; position: relative; z-index: 1;
 }
-@media (min-width: 768px) { .ingr-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
+@media (min-width: 480px) { .ingr-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
+@media (min-width: 768px) { .ingr-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; } }
 .ingr-card {
-  background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border); transition: box-shadow 200ms var(--ease);
+  background: var(--white); border-radius: 16px; overflow: hidden;
+  box-shadow: 0 2px 16px rgba(30,21,48,0.08); border: none;
+  transition: box-shadow 300ms var(--ease), transform 300ms var(--ease);
 }
-.ingr-card:hover { box-shadow: var(--shadow-md); }
+.ingr-card:hover { box-shadow: 0 6px 28px rgba(30,21,48,0.14); transform: translateY(-2px); }
 .ingr-card__visual {
-  aspect-ratio: 4/3; background-size: cover; background-position: center; position: relative;
-  display: flex; align-items: flex-end; padding: 12px;
+  aspect-ratio: 16/9; background-size: cover; background-position: center; position: relative;
+  display: flex; align-items: flex-end; padding: 10px; border-radius: 16px 16px 0 0;
 }
+@media (min-width: 480px) { .ingr-card__visual { aspect-ratio: 1/1; } }
+@media (min-width: 768px) { .ingr-card__visual { aspect-ratio: 4/3.5; } }
 .ingr-card__badge {
-  font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
   padding: 5px 12px; border-radius: var(--radius-full); color: #fff;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
 }
-.ingr-card__badge--blue { background: rgba(90,80,170,0.85); }
-.ingr-card__badge--purple { background: rgba(120,80,160,0.85); }
-.ingr-card__badge--amber { background: rgba(140,90,180,0.85); }
-.ingr-card__badge--green { background: rgba(107,94,167,0.85); }
-.ingr-card__body { padding: 16px; }
-.ingr-card__name { font-size: 16px; font-weight: 700; color: var(--deep); margin-bottom: 2px; }
-.ingr-card__subtitle { font-size: 12px; color: var(--warm-grey); margin-bottom: 10px; }
+.ingr-card__badge--blue { background: rgba(75,55,145,0.82); }
+.ingr-card__badge--purple { background: rgba(100,60,140,0.82); }
+.ingr-card__badge--amber { background: rgba(120,75,155,0.82); }
+.ingr-card__badge--green { background: rgba(85,65,140,0.82); }
+.ingr-card__body { padding: 14px 14px 16px; }
+.ingr-card__name { font-size: 15px; font-weight: 800; color: var(--deep); margin-bottom: 2px; }
+.ingr-card__subtitle { font-size: 11px; color: var(--warm-grey); margin-bottom: 10px; }
 .ingr-card__name:last-child, .ingr-card__body > .ingr-card__name + .ingr-card__benefits { margin-top: 8px; }
 .ingr-card__benefits { display: flex; flex-direction: column; gap: 8px; }
 .ingr-card__benefit { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 1.45; color: var(--charcoal); }
 .ingr-card__benefit-dot {
-  width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; margin-top: 1px;
+  width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 0;
 }
-.ingr-card__benefit-dot svg { width: 12px; height: 12px; }
-.ingr-card__benefit-dot--blue { background: rgba(90,80,170,0.12); color: #5A50AA; }
-.ingr-card__benefit-dot--purple { background: rgba(120,80,160,0.12); color: #7850A0; }
-.ingr-card__benefit-dot--amber { background: rgba(155,126,200,0.12); color: #9B7EC8; }
-.ingr-card__benefit-dot--green { background: rgba(107,94,167,0.12); color: #6B5EA7; }
+.ingr-card__benefit-dot svg { width: 13px; height: 13px; }
+.ingr-card__benefit-dot--blue { background: #EDE5F5; color: #6B4E97; }
+.ingr-card__benefit-dot--purple { background: #EDE5F5; color: #6B4E97; }
+.ingr-card__benefit-dot--amber { background: #EDE5F5; color: #6B4E97; }
+.ingr-card__benefit-dot--green { background: #EDE5F5; color: #6B4E97; }
 
 /* Expand panel */
 .ingr-expand {
@@ -674,17 +669,15 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 }
 .final-cta__ba-img:first-child .final-cta__ba-label { left: 10px; }
 .final-cta__ba-img:last-child .final-cta__ba-label { right: 10px; }
-.final-cta__slider {
-  position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%);
-  width: 3px; background: #fff; z-index: 2;
-}
-.final-cta__slider-handle {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 40px; height: 40px; background: #fff; border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;
-  cursor: ew-resize;
-}
-.final-cta__slider-arrows { display: flex; align-items: center; gap: 2px; color: #7B5EA7; }
+/* PDRN Results Chart */
+.pdrn-chart { background: var(--white); border-radius: 16px; padding: 20px 16px 16px; box-shadow: 0 2px 16px rgba(30,21,48,0.08); }
+.pdrn-chart__title { font-size: 15px; font-weight: 800; color: var(--deep); text-align: center; margin-bottom: 2px; }
+.pdrn-chart__subtitle { font-size: 12px; color: var(--warm-grey); text-align: center; margin-bottom: 12px; }
+.pdrn-chart__svg { width: 100%; height: auto; font-family: 'Plus Jakarta Sans', sans-serif; }
+.pdrn-chart__legend { display: flex; justify-content: center; gap: 20px; margin-top: 12px; }
+.pdrn-chart__legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--charcoal); }
+.pdrn-chart__legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.pdrn-chart__note { font-size: 10px; color: var(--warm-grey); text-align: center; margin-top: 8px; font-style: italic; }
 .final-cta__content { flex: 1; text-align: left; }
 .final-cta__headline {
   font-size: clamp(1.375rem, 3.5vw, 2rem); font-weight: 800; line-height: 1.15;
@@ -722,19 +715,19 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 .final-cta__trust-badge strong { font-weight: 700; font-size: 11px; color: var(--deep); }
 .final-cta__trust-badge span { font-size: 10px; color: var(--warm-grey); }
 .final-cta__social {
-  display: flex; align-items: center; gap: 14px; justify-content: flex-start;
-  background: var(--white); border-radius: var(--radius); padding: 16px 20px;
+  display: flex; align-items: center; gap: 10px; justify-content: flex-start;
+  background: var(--white); border-radius: var(--radius); padding: 10px 14px;
   box-shadow: 0 2px 12px rgba(46,26,71,0.08); border: 1px solid rgba(123,94,167,0.12);
 }
-.final-cta__avatars { display: flex; }
+.final-cta__avatars { display: flex; flex-shrink: 0; }
 .final-cta__avatar {
-  width: 32px; height: 32px; border-radius: 50%; border: 2px solid #fff; margin-left: -8px; background: #9B7EC8;
+  width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; margin-left: -8px; background: #9B7EC8; background-size: cover; background-position: center top;
 }
 .final-cta__avatar:first-child { margin-left: 0; }
-.final-cta__social-text { font-size: 12px; line-height: 1.4; }
-.final-cta__social-text .stars { color: var(--gold); font-size: 14px; letter-spacing: 1px; }
-.final-cta__social-text strong { display: block; font-size: 13px; font-weight: 700; color: var(--deep); }
-.final-cta__social-text em { font-style: italic; color: var(--warm-grey); font-size: 12px; }
+.final-cta__social-text { font-size: 11px; line-height: 1.35; }
+.final-cta__social-text .stars { color: var(--gold); font-size: 12px; letter-spacing: 1px; }
+.final-cta__social-text strong { display: block; font-size: 12px; font-weight: 700; color: var(--deep); margin-top: 1px; }
+.final-cta__social-text em { font-style: italic; color: var(--warm-grey); font-size: 11px; }
 
 /* ============================================= */
 /* STICKY BAR — MOBILE (Full-Width Button + Thumbnail) */
@@ -894,12 +887,14 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
           <a href="#reviews" class="stars__count">127 Reviews</a>
         </div>
         <p class="hero__tagline">You've tried everything. Your skin still feels dry, tight, reactive.<br>It's not the products — it's your changing hormones.<br>Age Lift 5+ works with that change.</p>
+        <!-- HIDDEN: Benefits block (commented out, not deleted)
         <div class="hero__benefits">
           <div class="hero__benefit"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#7B5EA7"/><path d="M4.5 8.2L7 10.5L11.5 5.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Rebuilds the moisture barrier lost during menopause</div>
           <div class="hero__benefit"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#7B5EA7"/><path d="M4.5 8.2L7 10.5L11.5 5.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Calms reactive, sensitive skin</div>
           <div class="hero__benefit"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#7B5EA7"/><path d="M4.5 8.2L7 10.5L11.5 5.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Visibly firms and lifts in 4 weeks</div>
           <div class="hero__benefit"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#7B5EA7"/><path d="M4.5 8.2L7 10.5L11.5 5.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Dermatologist tested for menopausal skin</div>
         </div>
+        -->
         <div class="mini-review">
           <img class="mini-review__photo" src="linda-review.png" alt="Linda, 53">
           <div class="mini-review__body">
@@ -923,7 +918,7 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
             <div class="variant-pill" data-qty="1" data-price="39" data-compare="" onclick="selectVariant(this)">
               <span class="variant-pill__qty">1 Bottle</span>
               <span class="variant-pill__price">$39</span>
-              <span class="variant-pill__each" style="font-size:10px;color:var(--warm-grey);">~30-day supply</span>
+              <span class="variant-pill__each">$39 each</span>
             </div>
             <div class="variant-pill active" data-qty="2" data-price="70.20" data-compare="78" onclick="selectVariant(this)">
               <span class="variant-pill__badge variant-pill__badge--popular">Most Popular</span>
@@ -993,27 +988,19 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 
         <!-- Post-ATC Trust -->
         <div class="post-atc-trust">
-          <div class="post-atc-trust__badges">
-            <div class="post-atc-badge">
-              <svg class="post-atc-badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="10" rx="1"/><path d="M16 10h4l3 3v3h-7V10z"/><circle cx="7" cy="18" r="2"/><circle cx="20" cy="18" r="2"/></svg>
-              <span class="post-atc-badge__text">Free Shipping<br>on orders $49+</span>
+          <div class="post-atc-trust__inline">
+            <div class="post-atc-inline-badge">
+              <svg class="post-atc-inline-badge__icon" viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              <span class="post-atc-inline-badge__text">Love-It Guarantee</span>
             </div>
-            <div class="post-atc-badge">
-              <svg class="post-atc-badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              <span class="post-atc-badge__text">30 Day<br>Free Trial</span>
+            <div class="post-atc-inline-badge">
+              <svg class="post-atc-inline-badge__icon" viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              <span class="post-atc-inline-badge__text">Secure Checkout</span>
             </div>
-            <div class="post-atc-badge">
-              <svg class="post-atc-badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-              <span class="post-atc-badge__text">Satisfaction<br>Guarantee</span>
+            <div class="post-atc-inline-badge">
+              <svg class="post-atc-inline-badge__icon" viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="10" rx="1"/><path d="M16 10h4l3 3v3h-7V10z"/><circle cx="7" cy="18" r="2"/><circle cx="20" cy="18" r="2"/></svg>
+              <span class="post-atc-inline-badge__text">Fast Shipping</span>
             </div>
-            <div class="post-atc-badge">
-              <svg class="post-atc-badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
-              <span class="post-atc-badge__text">Dermatologist<br>Tested</span>
-            </div>
-          </div>
-          <div class="post-atc-trust__card" style="padding:10px 14px; display:flex; align-items:center; gap:8px;">
-            <svg style="width:18px;height:18px;flex-shrink:0;color:#5A7A62;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-            <span style="font-size:12px;font-weight:600;color:var(--charcoal);">30-Day Money-Back Guarantee — love it or send it back for a full refund.</span>
           </div>
         </div>
 
@@ -1291,31 +1278,68 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
   <div class="container">
     <div class="final-cta__layout">
 
-      <!-- Left: Before/After -->
+      <!-- Left: PDRN Results Chart -->
       <div class="final-cta__visual">
-        <div class="final-cta__ba">
-          <div class="final-cta__ba-img" style="background:#9B8AAE; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.4); font-size:13px; font-weight:600; letter-spacing:0.05em;">
-            <span style="position:relative;z-index:0;">Photo placeholder</span>
-            <span class="final-cta__ba-label">Before</span>
-          </div>
-          <div class="final-cta__ba-img" style="background:#C4B0D8; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.4); font-size:13px; font-weight:600; letter-spacing:0.05em;">
-            <span style="position:relative;z-index:0;">Photo placeholder</span>
-            <span class="final-cta__ba-label">After 4 Weeks</span>
-          </div>
-        </div>
-        <div class="final-cta__slider">
-          <div class="final-cta__slider-handle">
-            <div class="final-cta__slider-arrows">
-              <svg width="10" height="14" viewBox="0 0 10 14" fill="none"><path d="M8 1L2 7l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <svg width="10" height="14" viewBox="0 0 10 14" fill="none"><path d="M2 1l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="pdrn-chart">
+          <div class="pdrn-chart__title">Clinical Results with PDRN</div>
+          <div class="pdrn-chart__subtitle">Measured improvement over 8 weeks</div>
+          <svg class="pdrn-chart__svg" viewBox="0 0 400 260" fill="none">
+            <!-- Grid lines -->
+            <line x1="50" y1="30" x2="50" y2="210" stroke="#E8E0F0" stroke-width="1"/>
+            <line x1="50" y1="210" x2="380" y2="210" stroke="#E8E0F0" stroke-width="1"/>
+            <line x1="50" y1="170" x2="380" y2="170" stroke="#E8E0F0" stroke-width="0.5" stroke-dasharray="4 4"/>
+            <line x1="50" y1="130" x2="380" y2="130" stroke="#E8E0F0" stroke-width="0.5" stroke-dasharray="4 4"/>
+            <line x1="50" y1="90" x2="380" y2="90" stroke="#E8E0F0" stroke-width="0.5" stroke-dasharray="4 4"/>
+            <line x1="50" y1="50" x2="380" y2="50" stroke="#E8E0F0" stroke-width="0.5" stroke-dasharray="4 4"/>
+            <!-- Y axis labels -->
+            <text x="44" y="214" text-anchor="end" fill="#8A8498" font-size="10">0%</text>
+            <text x="44" y="174" text-anchor="end" fill="#8A8498" font-size="10">25%</text>
+            <text x="44" y="134" text-anchor="end" fill="#8A8498" font-size="10">50%</text>
+            <text x="44" y="94" text-anchor="end" fill="#8A8498" font-size="10">75%</text>
+            <text x="44" y="54" text-anchor="end" fill="#8A8498" font-size="10">100%</text>
+            <!-- X axis labels -->
+            <text x="72" y="230" text-anchor="middle" fill="#8A8498" font-size="10">Week 0</text>
+            <text x="182" y="230" text-anchor="middle" fill="#8A8498" font-size="10">Week 2</text>
+            <text x="292" y="230" text-anchor="middle" fill="#8A8498" font-size="10">Week 4</text>
+            <text x="368" y="230" text-anchor="middle" fill="#8A8498" font-size="10">Week 8</text>
+            <!-- Area fills -->
+            <path d="M72 210 L182 128 L292 72 L368 38 L368 210 Z" fill="#7B5EA7" opacity="0.08"/>
+            <path d="M72 210 L182 152 L292 108 L368 62 L368 210 Z" fill="#C4993B" opacity="0.06"/>
+            <!-- Hydration line -->
+            <polyline points="72,210 182,128 292,72 368,38" stroke="#7B5EA7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Barrier Strength line -->
+            <polyline points="72,210 182,152 292,108 368,62" stroke="#C4993B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Data dots — Hydration -->
+            <circle cx="72" cy="210" r="4" fill="#fff" stroke="#7B5EA7" stroke-width="2"/>
+            <circle cx="182" cy="128" r="4" fill="#fff" stroke="#7B5EA7" stroke-width="2"/>
+            <circle cx="292" cy="72" r="5" fill="#fff" stroke="#7B5EA7" stroke-width="2"/>
+            <circle cx="368" cy="38" r="5" fill="#fff" stroke="#7B5EA7" stroke-width="2"/>
+            <!-- Data dots — Barrier -->
+            <circle cx="72" cy="210" r="4" fill="#fff" stroke="#C4993B" stroke-width="2"/>
+            <circle cx="182" cy="152" r="4" fill="#fff" stroke="#C4993B" stroke-width="2"/>
+            <circle cx="292" cy="108" r="5" fill="#fff" stroke="#C4993B" stroke-width="2"/>
+            <circle cx="368" cy="62" r="5" fill="#fff" stroke="#C4993B" stroke-width="2"/>
+            <!-- End value labels -->
+            <text x="368" y="30" text-anchor="middle" fill="#7B5EA7" font-size="12" font-weight="700">+92%</text>
+            <text x="368" y="56" text-anchor="middle" fill="#C4993B" font-size="12" font-weight="700">+78%</text>
+          </svg>
+          <div class="pdrn-chart__legend">
+            <div class="pdrn-chart__legend-item">
+              <span class="pdrn-chart__legend-dot" style="background:#7B5EA7;"></span>
+              Skin Hydration
+            </div>
+            <div class="pdrn-chart__legend-item">
+              <span class="pdrn-chart__legend-dot" style="background:#C4993B;"></span>
+              Barrier Strength
             </div>
           </div>
+          <div class="pdrn-chart__note">*Based on clinical studies with PDRN. Individual results may vary.</div>
         </div>
       </div>
 
       <!-- Right: CTA content -->
       <div class="final-cta__content">
-        <h2 class="final-cta__headline">Ready to Turn <em>Back Time?</em></h2>
+        <h2 class="final-cta__headline">How PDRN changing the <em>strength and barrier</em></h2>
         <p class="final-cta__sub">Join thousands of women 40+ who are seeing <strong>younger, firmer, glowing skin</strong> — starting today.</p>
 
         <!-- Price Display -->
@@ -1332,7 +1356,7 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
             <div class="variant-pill" data-qty="1" data-price="39" data-compare="" onclick="selectRepeatVariant(this)">
               <span class="variant-pill__qty">1 Bottle</span>
               <span class="variant-pill__price">$39</span>
-              <span class="variant-pill__each" style="font-size:10px;color:var(--warm-grey);">~30-day supply</span>
+              <span class="variant-pill__each">$39 each</span>
             </div>
             <div class="variant-pill active" data-qty="2" data-price="70.20" data-compare="78" onclick="selectRepeatVariant(this)">
               <span class="variant-pill__badge variant-pill__badge--popular">Most Popular</span>
@@ -1400,36 +1424,28 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
         </div>
         <!-- Post-ATC Trust -->
         <div class="post-atc-trust">
-          <div class="post-atc-trust__badges">
-            <div class="post-atc-badge">
-              <svg class="post-atc-badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="10" rx="1"/><path d="M16 10h4l3 3v3h-7V10z"/><circle cx="7" cy="18" r="2"/><circle cx="20" cy="18" r="2"/></svg>
-              <span class="post-atc-badge__text">Free Shipping<br>on orders $49+</span>
+          <div class="post-atc-trust__inline">
+            <div class="post-atc-inline-badge">
+              <svg class="post-atc-inline-badge__icon" viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              <span class="post-atc-inline-badge__text">Love-It Guarantee</span>
             </div>
-            <div class="post-atc-badge">
-              <svg class="post-atc-badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              <span class="post-atc-badge__text">30 Day<br>Free Trial</span>
+            <div class="post-atc-inline-badge">
+              <svg class="post-atc-inline-badge__icon" viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              <span class="post-atc-inline-badge__text">Secure Checkout</span>
             </div>
-            <div class="post-atc-badge">
-              <svg class="post-atc-badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-              <span class="post-atc-badge__text">Satisfaction<br>Guarantee</span>
+            <div class="post-atc-inline-badge">
+              <svg class="post-atc-inline-badge__icon" viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="10" rx="1"/><path d="M16 10h4l3 3v3h-7V10z"/><circle cx="7" cy="18" r="2"/><circle cx="20" cy="18" r="2"/></svg>
+              <span class="post-atc-inline-badge__text">Fast Shipping</span>
             </div>
-            <div class="post-atc-badge">
-              <svg class="post-atc-badge__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
-              <span class="post-atc-badge__text">Dermatologist<br>Tested</span>
-            </div>
-          </div>
-          <div class="post-atc-trust__card" style="padding:10px 14px; display:flex; align-items:center; gap:8px;">
-            <svg style="width:18px;height:18px;flex-shrink:0;color:#5A7A62;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-            <span style="font-size:12px;font-weight:600;color:var(--charcoal);">30-Day Money-Back Guarantee — love it or send it back for a full refund.</span>
           </div>
         </div>
 
         <div class="final-cta__social">
           <div class="final-cta__avatars">
-            <div class="final-cta__avatar"></div>
-            <div class="final-cta__avatar" style="background:#7B5EA7;"></div>
-            <div class="final-cta__avatar" style="background:#6B4E97;"></div>
-            <div class="final-cta__avatar" style="background:#5A3D80;"></div>
+            <div class="final-cta__avatar" style="background-image:url('https://images.pexels.com/photos/8307321/pexels-photo-8307321.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=face');"></div>
+            <div class="final-cta__avatar" style="background-image:url('https://images.pexels.com/photos/12644998/pexels-photo-12644998.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=face');"></div>
+            <div class="final-cta__avatar" style="background-image:url('https://images.pexels.com/photos/8417645/pexels-photo-8417645.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=face');"></div>
+            <div class="final-cta__avatar" style="background-image:url('https://images.pexels.com/photos/5682847/pexels-photo-5682847.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop&crop=face');"></div>
           </div>
           <div class="final-cta__social-text">
             <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
@@ -1474,51 +1490,51 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
       </div>
 
       <div class="sp-video-grid">
-        <div class="sp-video" data-category="firmness" style="background:url('https://images.pexels.com/photos/3764013/pexels-photo-3764013.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+        <div class="sp-video" data-category="firmness" style="background:url('https://images.pexels.com/photos/4584638/pexels-photo-4584638.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop&crop=face') center/cover no-repeat, #3D2266">
           <div class="sp-video__play"></div>
           <span class="sp-video__name">Sarah M.</span>
         </div>
-        <div class="sp-video" data-category="hydration" style="background:url('https://images.pexels.com/photos/3762466/pexels-photo-3762466.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+        <div class="sp-video" data-category="hydration" style="background:url('https://images.pexels.com/photos/3785803/pexels-photo-3785803.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop&crop=face') center/cover no-repeat, #3D2266">
           <div class="sp-video__play"></div>
           <span class="sp-video__name">Linda K.</span>
         </div>
-        <div class="sp-video" data-category="glow" style="background:url('https://images.pexels.com/photos/3756165/pexels-photo-3756165.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+        <div class="sp-video" data-category="glow" style="background:url('https://images.pexels.com/photos/12644996/pexels-photo-12644996.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop&crop=face') center/cover no-repeat, #3D2266">
           <div class="sp-video__play"></div>
           <span class="sp-video__name">Michelle T.</span>
         </div>
-        <div class="sp-video" data-category="firmness" style="background:url('https://images.pexels.com/photos/3764568/pexels-photo-3764568.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+        <div class="sp-video" data-category="firmness" style="background:url('https://images.pexels.com/photos/7169240/pexels-photo-7169240.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop&crop=face') center/cover no-repeat, #3D2266">
           <div class="sp-video__play"></div>
           <span class="sp-video__name">Karen W.</span>
         </div>
-        <div class="sp-video" data-category="barrier" style="background:url('https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+        <div class="sp-video" data-category="barrier" style="background:url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop&crop=face') center/cover no-repeat, #3D2266">
           <div class="sp-video__play"></div>
           <span class="sp-video__name">Dana R.</span>
         </div>
-        <div class="sp-video" data-category="hydration" style="background:url('https://images.pexels.com/photos/3764402/pexels-photo-3764402.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+        <div class="sp-video" data-category="hydration" style="background:url('https://images.pexels.com/photos/5691640/pexels-photo-5691640.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop&crop=face') center/cover no-repeat, #3D2266">
           <div class="sp-video__play"></div>
           <span class="sp-video__name">Patricia L.</span>
         </div>
-        <div class="sp-video" data-category="glow" style="background:url('https://images.pexels.com/photos/3765132/pexels-photo-3765132.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+        <div class="sp-video" data-category="glow" style="background:url('https://images.pexels.com/photos/6787008/pexels-photo-6787008.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop&crop=face') center/cover no-repeat, #3D2266">
           <div class="sp-video__play"></div>
           <span class="sp-video__name">Rachel B.</span>
         </div>
-        <div class="sp-video" data-category="firmness" style="background:url('https://images.pexels.com/photos/3762800/pexels-photo-3762800.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+        <div class="sp-video" data-category="firmness" style="background:url('https://images.pexels.com/photos/3807525/pexels-photo-3807525.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop&crop=face') center/cover no-repeat, #3D2266">
           <div class="sp-video__play"></div>
           <span class="sp-video__name">Angela D.</span>
         </div>
-        <div class="sp-video" data-category="barrier" style="background:url('https://images.pexels.com/photos/3764651/pexels-photo-3764651.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+        <div class="sp-video" data-category="barrier" style="background:url('https://images.pexels.com/photos/7551581/pexels-photo-7551581.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop&crop=face') center/cover no-repeat, #3D2266">
           <div class="sp-video__play"></div>
           <span class="sp-video__name">Janet M.</span>
         </div>
-        <div class="sp-video" data-category="hydration" style="background:url('https://images.pexels.com/photos/3764260/pexels-photo-3764260.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+        <div class="sp-video" data-category="hydration" style="background:url('https://images.pexels.com/photos/8417645/pexels-photo-8417645.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop&crop=face') center/cover no-repeat, #3D2266">
           <div class="sp-video__play"></div>
           <span class="sp-video__name">Diane V.</span>
         </div>
-        <div class="sp-video" data-category="glow" style="background:url('https://images.pexels.com/photos/3756879/pexels-photo-3756879.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+        <div class="sp-video" data-category="glow" style="background:url('https://images.pexels.com/photos/8307321/pexels-photo-8307321.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop&crop=face') center/cover no-repeat, #3D2266">
           <div class="sp-video__play"></div>
           <span class="sp-video__name">Carol S.</span>
         </div>
-        <div class="sp-video" data-category="firmness" style="background:url('https://images.pexels.com/photos/3762453/pexels-photo-3762453.jpeg?auto=compress&cs=tinysrgb&w=400') center/cover no-repeat, #3D2266">
+        <div class="sp-video" data-category="firmness" style="background:url('https://images.pexels.com/photos/5682847/pexels-photo-5682847.jpeg?auto=compress&cs=tinysrgb&w=400&h=700&fit=crop&crop=face') center/cover no-repeat, #3D2266">
           <div class="sp-video__play"></div>
           <span class="sp-video__name">Donna P.</span>
         </div>
@@ -1646,7 +1662,7 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 <div class="sticky-mob" id="stickyMob">
   <div class="sticky-mob__top">
     <div class="sticky-mob__product">
-      <img class="sticky-mob__thumb" src="age_lift.png" alt="">
+      <img class="sticky-mob__thumb" id="stickyMobThumb" src="2pack_serum.png" alt="">
       <div>
         <div class="sticky-mob__name">Age Lift 5+ Serum</div>
         <div class="sticky-mob__variant" id="stickyMobDetail">2 Bottles · One-time</div>
@@ -1663,7 +1679,7 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 <!-- STICKY BAR — DESKTOP -->
 <div class="sticky-desk" id="stickyDesk">
   <div class="sticky-desk__product">
-    <img class="sticky-desk__thumb" src="age_lift.png" alt="">
+    <img class="sticky-desk__thumb" id="stickyDeskThumb" src="2pack_serum.png" alt="">
     <span class="sticky-desk__name">Age Lift 5+ Lifting Serum</span>
   </div>
   <div class="sticky-desk__stars">★★★★★<span class="sticky-desk__rating">4.9 (847)</span></div>
@@ -1687,6 +1703,8 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
   let currentQty = 2;
   let isSubscription = false;
   const DISCOUNT = 0.85;
+  var variantImageMap = { 1: 0, 2: 1, 4: 2 }; // qty → gallery index
+  var variantThumbMap = { 1: 'age_lift.png', 2: '2pack_serum.png', 4: '4pack_serum.png' };
 
   // === PRICE HELPERS ===
   function fmt(n) { return '$' + n.toFixed(2); }
@@ -1746,10 +1764,17 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
     var sdp = document.getElementById('stickyDeskPrice');
     var sdc = document.getElementById('stickyDeskCompare');
     if (smp) smp.textContent = fmt(price);
-    if (smc) smc.textContent = fmt(compare);
+    if (smc) { smc.textContent = compare ? fmt(compare) : ''; smc.style.display = compare ? 'inline' : 'none'; }
     if (smd) smd.textContent = label;
     if (sdp) sdp.textContent = fmt(price);
-    if (sdc) sdc.textContent = fmt(compare);
+    if (sdc) { sdc.textContent = compare ? fmt(compare) : ''; sdc.style.display = compare ? 'inline' : 'none'; }
+
+    // Update sticky bar thumbnails based on variant
+    var thumbSrc = variantThumbMap[currentQty] || 'age_lift.png';
+    var smt = document.getElementById('stickyMobThumb');
+    var sdt = document.getElementById('stickyDeskThumb');
+    if (smt) smt.src = thumbSrc;
+    if (sdt) sdt.src = thumbSrc;
   }
 
   // === VARIANT SELECTION ===
@@ -1832,8 +1857,6 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 
   // === GALLERY ===
   window.currentGalleryIndex = 1;
-  var variantImageMap = { 1: 0, 2: 1, 4: 2 }; // qty → gallery index
-
   window.selectGallery = function(index) {
     // pause video if leaving video slide
     var heroVid = document.getElementById('heroVideo');
