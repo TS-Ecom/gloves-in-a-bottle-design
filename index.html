@@ -785,6 +785,205 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 @media (max-width: 1023px) { .sticky-desk { display: none !important; } }
 @media (min-width: 1024px) { .sticky-desk { display: flex; } }
 
+/* ---- WHY PDRN ---- */
+.why-pdrn { background: var(--cream); }
+.why-pdrn__top { text-align: center; margin-bottom: 36px; }
+.why-pdrn__headline { font-size: 26px; font-weight: 800; color: var(--deep); line-height: 1.25; }
+@media (min-width: 768px) { .why-pdrn__headline { font-size: 32px; } }
+.why-pdrn__subhead { font-size: 15px; line-height: 1.55; color: var(--warm-grey); margin-top: 10px; }
+
+/* Two-column: image + text */
+.why-pdrn__row { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
+@media (min-width: 768px) { .why-pdrn__row { grid-template-columns: 1fr 1fr; gap: 40px; } }
+.why-pdrn__image { border-radius: 20px; overflow: hidden; aspect-ratio: 4/5; }
+.why-pdrn__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 767px) { .why-pdrn__image { aspect-ratio: 3/4; max-height: none; } }
+.why-pdrn__text p { font-size: 15px; line-height: 1.65; color: var(--charcoal); margin-bottom: 14px; }
+.why-pdrn__benefits { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 12px; }
+.why-pdrn__benefit { display: flex; align-items: center; gap: 12px; background: var(--white); border-radius: 12px; padding: 12px 16px; box-shadow: 0 2px 8px rgba(30,21,48,0.06); }
+.why-pdrn__benefit-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.why-pdrn__benefit-icon svg { width: 18px; height: 18px; }
+.why-pdrn__benefit span { font-size: 14px; font-weight: 600; color: var(--charcoal); }
+
+/* Differentiation — formula cards */
+.why-pdrn__diff { margin-top: 48px; }
+.why-pdrn__diff-header { text-align: center; margin-bottom: 24px; }
+.why-pdrn__diff-title { font-size: 20px; font-weight: 800; color: var(--deep); }
+@media (min-width: 768px) { .why-pdrn__diff-title { font-size: 24px; } }
+.why-pdrn__diff-sub { font-size: 14px; color: var(--warm-grey); margin-top: 6px; }
+.why-pdrn__formula-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+@media (min-width: 768px) { .why-pdrn__formula-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; } }
+.why-pdrn__formula-card {
+  background: var(--white); border-radius: 16px; padding: 20px 16px; text-align: center;
+  box-shadow: 0 2px 12px rgba(30,21,48,0.07); border: 1px solid rgba(123,94,167,0.08);
+  transition: transform 300ms var(--ease), box-shadow 300ms var(--ease);
+}
+.why-pdrn__formula-card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(30,21,48,0.12); }
+.why-pdrn__formula-icon { width: 48px; height: 48px; border-radius: 50%; background: var(--accent-light); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; }
+.why-pdrn__formula-icon svg { width: 24px; height: 24px; }
+.why-pdrn__formula-name { font-size: 14px; font-weight: 700; color: var(--deep); margin-bottom: 4px; }
+.why-pdrn__formula-desc { font-size: 12px; color: var(--warm-grey); line-height: 1.4; }
+
+/* ============================================= */
+/* PROS COMPARISON                               */
+/* ============================================= */
+.pros-compare { background: #F0EBF5; }
+.pros-compare__section-title {
+  font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 12px 16px; margin-bottom: 8px; border-radius: 10px;
+}
+.pros-compare__section-title--with { background: var(--deep); color: #fff; }
+.pros-compare__section-title--without { background: rgba(123,94,167,0.08); color: var(--deep); margin-top: 24px; }
+.pros-compare__list { display: flex; flex-direction: column; gap: 6px; }
+.pros-compare__item {
+  display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+  background: var(--white); border-radius: 12px;
+}
+.pros-compare__check {
+  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.pros-compare__check--yes { background: #E8F5E9; }
+.pros-compare__check--yes svg { color: #4CAF50; }
+.pros-compare__check--no { background: #FFEBEE; }
+.pros-compare__check--no svg { color: #E53935; }
+.pros-compare__icon {
+  width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid rgba(123,94,167,0.2);
+}
+.pros-compare__icon--with { background: var(--accent-light); }
+.pros-compare__icon--without { background: #F9F5FD; }
+.pros-compare__icon svg { width: 20px; height: 20px; }
+.pros-compare__text { font-size: 14px; font-weight: 600; color: var(--deep); line-height: 1.35; }
+
+/* Desktop: two-column table layout */
+@media (min-width: 768px) {
+  .pros-compare__card { max-width: 720px; margin: 0 auto; background: var(--white); border-radius: 20px; box-shadow: 0 4px 32px rgba(30,21,48,0.10); overflow: hidden; }
+  .pros-compare__section-title { display: none; }
+  .pros-compare__header { display: grid; grid-template-columns: 1fr 1fr; }
+  .pros-compare__header-col { padding: 16px 20px; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; text-align: center; }
+  .pros-compare__header-col--with { background: var(--deep); color: #fff; }
+  .pros-compare__header-col--without { background: transparent; color: var(--deep); }
+  .pros-compare__body { display: grid; grid-template-columns: 1fr 1fr; }
+  .pros-compare__col { display: flex; flex-direction: column; }
+  .pros-compare__col--with { border-right: 1px solid var(--cream-dark); }
+  .pros-compare__list { gap: 0; }
+  .pros-compare__item { border-radius: 0; border-bottom: 1px solid var(--cream-dark); padding: 14px 18px; gap: 10px; }
+  .pros-compare__item:last-child { border-bottom: none; }
+}
+
+/* Mobile: hide desktop table structure */
+@media (max-width: 767px) {
+  .pros-compare__card { background: transparent; box-shadow: none; }
+  .pros-compare__header { display: none; }
+  .pros-compare__body { display: block; }
+  .pros-compare__col { display: block; }
+  .pros-compare__col--with { border-right: none; }
+}
+
+/* ============================================= */
+/* HOW TO USE                                    */
+/* ============================================= */
+.how-to-use { background: var(--white); }
+.htu-header { text-align: center; margin-bottom: var(--s-16); }
+.htu-header .eyebrow { margin-bottom: var(--s-4); }
+.htu-header h2 { color: var(--deep); }
+.htu-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px 16px;
+  max-width: 800px; margin: 0 auto;
+}
+@media (min-width: 768px) { .htu-grid { grid-template-columns: repeat(4, 1fr); gap: 32px; } }
+.htu-step { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.htu-step__icon {
+  width: 100px; height: 100px; border-radius: 50%; overflow: hidden; margin-bottom: 14px;
+  position: relative; box-shadow: 0 4px 16px rgba(30,21,48,0.10);
+  border: 3px solid var(--white);
+}
+@media (min-width: 768px) { .htu-step__icon { width: 120px; height: 120px; } }
+.htu-step__icon img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.htu-step__label {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 4px;
+}
+.htu-step__name { font-size: 18px; font-weight: 800; color: var(--deep); margin-bottom: 6px; }
+@media (min-width: 768px) { .htu-step__name { font-size: 20px; } }
+.htu-step__desc { font-size: 14px; line-height: 1.5; color: var(--warm-grey); max-width: 200px; }
+/* Connector lines (desktop only) */
+.htu-connector { display: none; }
+@media (min-width: 768px) {
+  .htu-grid { position: relative; }
+}
+
+/* ============================================= */
+/* TEXTURE SECTION                               */
+/* ============================================= */
+.texture-section { background: var(--deep); position: relative; overflow: hidden; }
+.texture__layout {
+  display: grid; grid-template-columns: 1fr; gap: 0; min-height: 400px;
+}
+@media (min-width: 768px) { .texture__layout { grid-template-columns: 1fr 1fr; min-height: 500px; } }
+
+.texture__image {
+  position: relative; min-height: 300px; overflow: hidden;
+}
+@media (min-width: 768px) { .texture__image { min-height: auto; } }
+.texture__image img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.texture__image .img-ph {
+  width: 100%; height: 100%; min-height: 300px; background: #3D2266;
+  border-radius: 0; border: none;
+}
+.texture__image .img-ph::before { border: none; }
+
+.texture__content {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: var(--s-16) var(--pad);
+}
+@media (min-width: 768px) { .texture__content { padding: var(--s-24) var(--s-24); } }
+
+.texture__headline {
+  font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.15;
+  color: #fff; letter-spacing: -0.02em; margin-bottom: var(--s-12);
+}
+.texture__headline span { display: block; }
+
+.texture__benefits-label {
+  font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: var(--s-8);
+}
+.texture__benefits { display: flex; flex-direction: column; gap: 12px; }
+.texture__benefit {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.9); line-height: 1.4;
+}
+.texture__benefit-check {
+  width: 22px; height: 22px; border-radius: 6px; background: rgba(123,94,167,0.3);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.texture__benefit-check svg { width: 14px; height: 14px; color: #C4A7E8; }
+
+/* ============================================= */
+/* FAQ SECTION (standalone)                      */
+/* ============================================= */
+.faq-section { background: var(--white); }
+.faq-section__header { text-align: center; margin-bottom: var(--s-16); }
+.faq-section__header .eyebrow { margin-bottom: var(--s-4); }
+.faq-section__wrap {
+  max-width: 720px; margin: 0 auto;
+}
+.faq-section .faq__item { border-top: 1.5px solid var(--border); }
+.faq-section .faq__item:last-child { border-bottom: 1.5px solid var(--border); }
+.faq-section .faq__trigger { padding: 20px 0; }
+.faq-section .faq__title { font-size: 16px; }
+@media (min-width: 768px) {
+  .faq-section .faq__title { font-size: 17px; }
+  .faq-section .faq__trigger { padding: 22px 0; }
+}
+
 /* ---- FOOTER ---- */
 .proto-footer {
   background: #2E1A47; text-align: center; padding: 32px var(--pad); font-size: 13px;
@@ -797,6 +996,7 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 </style>
+<script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 
@@ -918,6 +1118,7 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
             <div class="variant-pill" data-qty="1" data-price="39" data-compare="" onclick="selectVariant(this)">
               <span class="variant-pill__qty">1 Bottle</span>
               <span class="variant-pill__price">$39</span>
+              <span class="variant-pill__detail">~30-day supply</span>
               <span class="variant-pill__each">$39 each</span>
             </div>
             <div class="variant-pill active" data-qty="2" data-price="70.20" data-compare="78" onclick="selectVariant(this)">
@@ -972,7 +1173,10 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 
         <!-- ATC -->
         <div>
-          <button class="btn btn--primary" id="heroAtcBtn">Add to Cart — $70.20</button>
+          <button class="final-cta__atc" id="heroAtcBtn" onclick="void(0)">
+            <svg class="final-cta__atc-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            ADD TO CART — $70.20
+          </button>
         </div>
 
         <!-- Payment Icons -->
@@ -1339,7 +1543,7 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
 
       <!-- Right: CTA content -->
       <div class="final-cta__content">
-        <h2 class="final-cta__headline">How PDRN changing the <em>strength and barrier</em></h2>
+        <h2 class="final-cta__headline">Ready to Turn <em>Back Time?</em></h2>
         <p class="final-cta__sub">Join thousands of women 40+ who are seeing <strong>younger, firmer, glowing skin</strong> — starting today.</p>
 
         <!-- Price Display -->
@@ -1356,6 +1560,7 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
             <div class="variant-pill" data-qty="1" data-price="39" data-compare="" onclick="selectRepeatVariant(this)">
               <span class="variant-pill__qty">1 Bottle</span>
               <span class="variant-pill__price">$39</span>
+              <span class="variant-pill__detail">~30-day supply</span>
               <span class="variant-pill__each">$39 each</span>
             </div>
             <div class="variant-pill active" data-qty="2" data-price="70.20" data-compare="78" onclick="selectRepeatVariant(this)">
@@ -1653,6 +1858,381 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
   </div>
 </section>
 
+<!-- ================================================ -->
+<!-- WHY PDRN IS GETTING SO MUCH ATTENTION           -->
+<!-- ================================================ -->
+<section class="section why-pdrn" id="why-pdrn">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="why-pdrn__top">
+      <div class="eyebrow">Science-backed skincare</div>
+      <h2 class="why-pdrn__headline">Why PDRN Is Getting So Much Attention</h2>
+      <p class="why-pdrn__subhead">Most skincare sits on the surface. PDRN helps support what's happening deeper.</p>
+    </div>
+
+    <!-- Two-column: image + text -->
+    <div class="why-pdrn__row">
+      <div class="why-pdrn__image">
+        <img src="https://images.pexels.com/photos/30473027/pexels-photo-30473027.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop" alt="Mature woman applying serum to face">
+      </div>
+      <div class="why-pdrn__text">
+        <p>PDRN (derived from salmon DNA) is one of the newest ingredients in skincare.</p>
+        <p>It's known for helping support the skin's natural renewal process, which is exactly what slows down as we age.</p>
+        <p>Instead of just adding moisture, it helps your skin:</p>
+        <div class="why-pdrn__benefits">
+          <div class="why-pdrn__benefit">
+            <div class="why-pdrn__benefit-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M3 7c3-2 6-2 9 0s6 2 9 0"/><path d="M3 12c3-2 6-2 9 0s6 2 9 0"/><path d="M3 17c3-2 6-2 9 0s6 2 9 0"/></svg>
+            </div>
+            <span>Look smoother</span>
+          </div>
+          <div class="why-pdrn__benefit">
+            <div class="why-pdrn__benefit-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 20V4"/><path d="M5 11l7-7 7 7"/><path d="M5 20h14"/></svg>
+            </div>
+            <span>Feel firmer</span>
+          </div>
+          <div class="why-pdrn__benefit">
+            <div class="why-pdrn__benefit-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="4"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
+            </div>
+            <span>Appear more refreshed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Differentiation: formula cards -->
+    <div class="why-pdrn__diff">
+      <div class="why-pdrn__diff-header">
+        <div class="why-pdrn__diff-title">That's why this serum works differently</div>
+        <p class="why-pdrn__diff-sub">While most products focus only on hydration, this formula combines:</p>
+      </div>
+      <div class="why-pdrn__formula-grid">
+        <div class="why-pdrn__formula-card">
+          <div class="why-pdrn__formula-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" width="24" height="24"><path d="M24 8l13.86 8v16L24 40 10.14 32V16z" stroke="#7B5EA7" stroke-width="2" stroke-linejoin="round"/><line x1="24" y1="8" x2="24" y2="40" stroke="#7B5EA7" stroke-width="1.5" opacity="0.3"/><line x1="10.14" y1="16" x2="37.86" y2="32" stroke="#7B5EA7" stroke-width="1.5" opacity="0.3"/><line x1="37.86" y1="16" x2="10.14" y2="32" stroke="#7B5EA7" stroke-width="1.5" opacity="0.3"/><circle cx="24" cy="8" r="3" fill="#7B5EA7"/><circle cx="37.86" cy="16" r="3" fill="#7B5EA7"/><circle cx="37.86" cy="32" r="3" fill="#7B5EA7"/><circle cx="24" cy="40" r="3" fill="#7B5EA7"/><circle cx="10.14" cy="32" r="3" fill="#7B5EA7"/><circle cx="10.14" cy="16" r="3" fill="#7B5EA7"/><circle cx="24" cy="24" r="8" fill="#7B5EA7" opacity="0.12"/><text x="24" y="28.5" text-anchor="middle" fill="#7B5EA7" font-size="13" font-weight="800" font-family="Plus Jakarta Sans,sans-serif">P</text></svg>
+          </div>
+          <div class="why-pdrn__formula-name">PDRN</div>
+          <div class="why-pdrn__formula-desc">Supports skin renewal</div>
+        </div>
+        <div class="why-pdrn__formula-card">
+          <div class="why-pdrn__formula-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="12" cy="19" r="2"/><line x1="7" y1="12" x2="10" y2="12"/><line x1="14" y1="12" x2="17" y2="12"/><line x1="12" y1="7" x2="12" y2="10"/><line x1="12" y1="14" x2="12" y2="17"/></svg>
+          </div>
+          <div class="why-pdrn__formula-name">Peptides</div>
+          <div class="why-pdrn__formula-desc">Help improve firmness</div>
+        </div>
+        <div class="why-pdrn__formula-card">
+          <div class="why-pdrn__formula-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 4 C12 4, 7 10, 7 13.5 C7 16.5, 9.2 19, 12 19 C14.8 19, 17 16.5, 17 13.5 C17 10, 12 4, 12 4 Z"/><path d="M9.5 14 C9.5 15.5, 10.5 16.5, 12 17"/></svg>
+          </div>
+          <div class="why-pdrn__formula-name">Niacinamide</div>
+          <div class="why-pdrn__formula-desc">Smooths + evens tone</div>
+        </div>
+        <div class="why-pdrn__formula-card">
+          <div class="why-pdrn__formula-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" width="24" height="24"><path d="M24 42V22" stroke="#7B5EA7" stroke-width="2.5" stroke-linecap="round"/><path d="M24 22C24 22 24 8 38 6C38 6 40 22 24 28" stroke="#7B5EA7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M24 30C24 30 20 22 10 22C10 22 10 32 24 34" stroke="#7B5EA7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M30 14C27 18 24 22 24 22" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/><path d="M17 25C20 27 24 30 24 30" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/></svg>
+          </div>
+          <div class="why-pdrn__formula-name">Botanical Oils</div>
+          <div class="why-pdrn__formula-desc">Nourish and protect</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================ -->
+<!-- PROS COMPARISON                                  -->
+<!-- ================================================ -->
+<section class="section pros-compare" id="pros-compare">
+  <div class="container">
+    <div class="pros-compare__card">
+      <!-- Desktop table header (hidden on mobile) -->
+      <div class="pros-compare__header">
+        <div class="pros-compare__header-col pros-compare__header-col--with">Made With</div>
+        <div class="pros-compare__header-col pros-compare__header-col--without">Made Without</div>
+      </div>
+      <div class="pros-compare__body">
+
+        <!-- Made With -->
+        <div class="pros-compare__col pros-compare__col--with">
+          <div class="pros-compare__section-title pros-compare__section-title--with">Made With</div>
+          <div class="pros-compare__list">
+            <div class="pros-compare__item">
+              <span class="pros-compare__check pros-compare__check--yes"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="pros-compare__icon pros-compare__icon--with"><svg viewBox="0 0 48 48" fill="none" width="20" height="20"><path d="M24 8l13.86 8v16L24 40 10.14 32V16z" stroke="#7B5EA7" stroke-width="2" stroke-linejoin="round"/><line x1="24" y1="8" x2="24" y2="40" stroke="#7B5EA7" stroke-width="1.5" opacity="0.3"/><line x1="10.14" y1="16" x2="37.86" y2="32" stroke="#7B5EA7" stroke-width="1.5" opacity="0.3"/><line x1="37.86" y1="16" x2="10.14" y2="32" stroke="#7B5EA7" stroke-width="1.5" opacity="0.3"/><circle cx="24" cy="8" r="3" fill="#7B5EA7"/><circle cx="37.86" cy="16" r="3" fill="#7B5EA7"/><circle cx="37.86" cy="32" r="3" fill="#7B5EA7"/><circle cx="24" cy="40" r="3" fill="#7B5EA7"/><circle cx="10.14" cy="32" r="3" fill="#7B5EA7"/><circle cx="10.14" cy="16" r="3" fill="#7B5EA7"/><circle cx="24" cy="24" r="8" fill="#7B5EA7" opacity="0.12"/><text x="24" y="28.5" text-anchor="middle" fill="#7B5EA7" font-size="13" font-weight="800" font-family="Plus Jakarta Sans,sans-serif">P</text></svg></span>
+              <span class="pros-compare__text">Advanced PDRN + Peptide Complex</span>
+            </div>
+            <div class="pros-compare__item">
+              <span class="pros-compare__check pros-compare__check--yes"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="pros-compare__icon pros-compare__icon--with"><svg viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M10 10h4"/></svg></span>
+              <span class="pros-compare__text">Skin Barrier-Supporting Ingredients</span>
+            </div>
+            <div class="pros-compare__item">
+              <span class="pros-compare__check pros-compare__check--yes"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="pros-compare__icon pros-compare__icon--with"><svg viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 2C12 2 6 9 6 14a6 6 0 0 0 12 0c0-5-6-12-6-12z"/><path d="M8 14a4 4 0 0 0 4 4"/></svg></span>
+              <span class="pros-compare__text">Deep Hydration + Collagen Support</span>
+            </div>
+            <div class="pros-compare__item">
+              <span class="pros-compare__check pros-compare__check--yes"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="pros-compare__icon pros-compare__icon--with"><svg viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M6 21c3-3 4-8 4-14"/><path d="M10 7c4 0 8 2 11 5C17 15 13 17 10 17"/></svg></span>
+              <span class="pros-compare__text">Clean, Gentle, Skin-Friendly Formula</span>
+            </div>
+            <div class="pros-compare__item">
+              <span class="pros-compare__check pros-compare__check--yes"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="pros-compare__icon pros-compare__icon--with"><svg viewBox="0 0 24 24" fill="none" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1.5" fill="#7B5EA7"/></svg></span>
+              <span class="pros-compare__text">Small-Batch Quality Manufacturing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Made Without -->
+        <div class="pros-compare__col">
+          <div class="pros-compare__section-title pros-compare__section-title--without">Made Without</div>
+          <div class="pros-compare__list">
+            <div class="pros-compare__item">
+              <span class="pros-compare__check pros-compare__check--no"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+              <span class="pros-compare__icon pros-compare__icon--without"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#7B5EA7" stroke-width="1.5"/><path d="M9 6h6M10 6v3l-2 4v5h8v-5l-2-4V6" stroke="#7B5EA7" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><line x1="4.2" y1="4.2" x2="19.8" y2="19.8" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="pros-compare__text">Parabens</span>
+            </div>
+            <div class="pros-compare__item">
+              <span class="pros-compare__check pros-compare__check--no"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+              <span class="pros-compare__icon pros-compare__icon--without"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#7B5EA7" stroke-width="1.5"/><ellipse cx="12" cy="12" rx="8" ry="3" stroke="#7B5EA7" stroke-width="1.2" transform="rotate(45 12 12)"/><ellipse cx="12" cy="12" rx="8" ry="3" stroke="#7B5EA7" stroke-width="1.2" transform="rotate(-45 12 12)"/><circle cx="12" cy="12" r="1.5" fill="#7B5EA7"/><line x1="4.2" y1="4.2" x2="19.8" y2="19.8" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="pros-compare__text">Sulfates</span>
+            </div>
+            <div class="pros-compare__item">
+              <span class="pros-compare__check pros-compare__check--no"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+              <span class="pros-compare__icon pros-compare__icon--without"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#7B5EA7" stroke-width="1.5"/><path d="M10 5h4v2l1 2v7a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V9l1-2V5z" stroke="#7B5EA7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><line x1="4.2" y1="4.2" x2="19.8" y2="19.8" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="pros-compare__text">Phthalates</span>
+            </div>
+            <div class="pros-compare__item">
+              <span class="pros-compare__check pros-compare__check--no"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+              <span class="pros-compare__icon pros-compare__icon--without"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#7B5EA7" stroke-width="1.5"/><path d="M16 6l-4 4" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round"/><path d="M11 11l-3 5c-.3.6.3 1.2.9.9L14 13" stroke="#7B5EA7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 18a2 2 0 1 0 0-4" stroke="#7B5EA7" stroke-width="1.2" stroke-linecap="round"/><line x1="4.2" y1="4.2" x2="19.8" y2="19.8" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="pros-compare__text">Artificial Dyes</span>
+            </div>
+            <div class="pros-compare__item">
+              <span class="pros-compare__check pros-compare__check--no"><svg viewBox="0 0 16 16" width="14" height="14"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+              <span class="pros-compare__icon pros-compare__icon--without"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#7B5EA7" stroke-width="1.5"/><path d="M13 5l-3 7h4l-3 7" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="4.2" y1="4.2" x2="19.8" y2="19.8" stroke="#7B5EA7" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span class="pros-compare__text">Harsh Irritants</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ -->
+<!-- HOW TO USE                                       -->
+<!-- ================================================ -->
+<section class="section how-to-use" id="how-to-use">
+  <div class="container">
+    <div class="htu-header">
+      <div class="eyebrow">Simple Routine</div>
+      <h2>4 steps. 60 seconds. Morning &amp; night.</h2>
+    </div>
+    <div class="htu-grid">
+
+      <div class="htu-step">
+        <div class="htu-step__icon">
+          <img src="img1.webp" alt="Woman cleansing face">
+        </div>
+        <div class="htu-step__label">Step 1</div>
+        <div class="htu-step__name">Cleanse</div>
+        <div class="htu-step__desc">Wash face with gentle cleanser. Pat dry.</div>
+      </div>
+
+      <div class="htu-step">
+        <div class="htu-step__icon">
+          <img src="img2.webp" alt="Serum drops on fingertips">
+        </div>
+        <div class="htu-step__label">Step 2</div>
+        <div class="htu-step__name">Apply</div>
+        <div class="htu-step__desc">3-4 drops onto fingertips. Dot on forehead, cheeks, chin.</div>
+      </div>
+
+      <div class="htu-step">
+        <div class="htu-step__icon">
+          <img src="img3.webp" alt="Woman pressing serum into skin">
+        </div>
+        <div class="htu-step__label">Step 3</div>
+        <div class="htu-step__name">Press</div>
+        <div class="htu-step__desc">Gently press into skin with upward motions. Don't rub.</div>
+      </div>
+
+      <div class="htu-step">
+        <div class="htu-step__icon">
+          <img src="img4.webp" alt="Woman applying SPF protection">
+        </div>
+        <div class="htu-step__label">Step 4</div>
+        <div class="htu-step__name">Protect</div>
+        <div class="htu-step__desc">Follow with moisturizer. AM: add SPF 30+.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ -->
+<!-- TEXTURE SECTION                                  -->
+<!-- ================================================ -->
+<section class="texture-section" id="texture">
+  <div class="texture__layout">
+
+    <div class="texture__image">
+      <img src="serum6.png" alt="Serum texture on skin — lightweight absorption">
+    </div>
+
+    <div class="texture__content">
+      <h2 class="texture__headline">
+        <span>Lightweight.</span>
+        <span>Fast-Absorbing.</span>
+        <span>Non-Greasy.</span>
+      </h2>
+      <div class="texture__benefits-label">Benefits</div>
+      <div class="texture__benefits">
+        <div class="texture__benefit">
+          <span class="texture__benefit-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          Weightless Gel-Serum
+        </div>
+        <div class="texture__benefit">
+          <span class="texture__benefit-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          Seamlessly Absorbs
+        </div>
+        <div class="texture__benefit">
+          <span class="texture__benefit-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          Light Silky Feel
+        </div>
+        <div class="texture__benefit">
+          <span class="texture__benefit-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          Won't Pill Under Makeup
+        </div>
+        <div class="texture__benefit">
+          <span class="texture__benefit-check"><svg viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          Leaves Skin Soft &amp; Smooth
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================ -->
+<!-- FAQ SECTION                                      -->
+<!-- ================================================ -->
+<section class="section faq-section" id="faq">
+  <div class="container">
+    <div class="faq-section__header">
+      <div class="eyebrow">Got Questions?</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-section__wrap">
+      <div class="faq">
+
+        <div class="faq__item">
+          <button class="faq__trigger" onclick="toggleFaq(this)">
+            <span class="faq__title">What Makes Age Lift 5+ Serum Different?</span>
+            <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__body">
+            <div class="faq__content">
+              <strong>Age Lift 5+ Serum is powered by PDRN (Salmon DNA Complex),</strong> an advanced skin renewal ingredient used in regenerative skincare to support natural repair and visibly improve firmness, smoothness, and radiance.<br><br>
+              Combined with peptides, niacinamide, and antioxidant-rich botanicals, this formula targets the 5 visible signs of aging while strengthening the skin barrier and restoring youthful vitality.<br><br>
+              Lightweight and fast-absorbing, it works beneath the surface to help skin appear healthier, brighter, and more resilient.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__trigger" onclick="toggleFaq(this)">
+            <span class="faq__title">How Quickly Can I Expect Results?</span>
+            <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__body">
+            <div class="faq__content">
+              Many users notice improved hydration and radiance within <strong>1-2 weeks</strong>.<br>
+              Visible improvements in elasticity, smoothness, and fine lines typically develop over <strong>4-8 weeks</strong> with consistent daily use.<br><br>
+              Skin renewal is a gradual process, and results continue to improve over time.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__trigger" onclick="toggleFaq(this)">
+            <span class="faq__title">Is This Suitable For Sensitive Skin?</span>
+            <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__body">
+            <div class="faq__content">
+              Yes. Age Lift 5+ Serum is designed for all skin types, including sensitive skin. The formula is lightweight, non-comedogenic, and free from parabens, sulfates, phthalates, artificial dyes, and harsh irritants.<br><br>
+              It supports the skin barrier without irritation. For external use only. Avoid contact with eyes.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__trigger" onclick="toggleFaq(this)">
+            <span class="faq__title">What Is PDRN And Why Is It In This Serum?</span>
+            <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__body">
+            <div class="faq__content">
+              PDRN (Polydeoxyribonucleotide) is derived from salmon DNA and is one of the newest breakthrough ingredients in skincare. It helps support the skin's natural renewal process, boosting regeneration and repair at a cellular level.<br><br>
+              Clinical studies show significant improvements in skin hydration (+92%) and barrier strength (+78%) over 8 weeks of use.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__trigger" onclick="toggleFaq(this)">
+            <span class="faq__title">Can I Use This With Other Skincare Products?</span>
+            <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__body">
+            <div class="faq__content">
+              Absolutely. Age Lift 5+ Serum is designed to fit seamlessly into your existing routine. Apply after cleansing and toning, before moisturizer.<br><br>
+              Recommended layering order:<br>
+              <strong>Cleanse &rarr; Tone &rarr; Age Lift 5+ Serum &rarr; Moisturizer &rarr; SPF (AM)</strong><br><br>
+              It pairs well with hyaluronic acid, vitamin C, and retinol products. Avoid layering with strong exfoliating acids (AHA/BHA) at the same time.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__trigger" onclick="toggleFaq(this)">
+            <span class="faq__title">What Is Your Return Policy?</span>
+            <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__body">
+            <div class="faq__content">
+              We offer a <strong>30-day money-back guarantee</strong>. If you're not completely satisfied with your results, contact our support team for a full refund, no questions asked.<br><br>
+              Simply reach out within 30 days of delivery and we'll take care of the rest.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__trigger" onclick="toggleFaq(this)">
+            <span class="faq__title">How Does The Subscription Work?</span>
+            <svg class="faq__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__body">
+            <div class="faq__content">
+              Subscribe and save 15% on every delivery. Choose your frequency: every 1, 2, or 3 months.<br><br>
+              You're always in control. Skip, reschedule, edit, or cancel deliveries anytime from your account. No commitments, no hidden fees.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <div class="proto-footer">
   &copy; 2026 Gloves In A Bottle. All rights reserved. · This is a design prototype.
@@ -1728,7 +2308,8 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
     var sb = document.getElementById('savingsBadge');
     sb.textContent = saving ? 'Save ' + fmt(saving) : '';
     sb.style.display = saving ? 'inline-block' : 'none';
-    document.getElementById('heroAtcBtn').textContent = 'Add to Cart — ' + fmt(price);
+    var heroAtc = document.getElementById('heroAtcBtn');
+    heroAtc.innerHTML = '<svg class="final-cta__atc-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> ADD TO CART — ' + fmt(price);
     document.getElementById('onetimePrice').textContent = fmt(currentPrice);
     document.getElementById('subPrice').textContent = fmt(getSubPrice(currentPrice)) + ' / delivery';
 
@@ -2127,5 +2708,6 @@ h3, .h3 { font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1
   });
 })();
 </script>
+<script>lucide.createIcons();</script>
 </body>
 </html>
